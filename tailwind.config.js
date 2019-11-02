@@ -4,7 +4,7 @@ module.exports = {
     	colors: {
         light : {
           background: '#fff0f3',
-          nav: '#ffe6eb',
+          nav: '#fff0f3',
           p: '#000000',
           h1: '#6a65d8',
           h2: '#1d2786',

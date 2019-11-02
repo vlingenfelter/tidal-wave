@@ -3,7 +3,7 @@
 	import { theme } from '../stores';
 
 	$: backgroundStyles = `bg-${$theme}-background`;
-	$: h1Styles = `font-mono text-${$theme}-h1 text-2xl`;
+	$: h1Styles = `font-mono text-${$theme}-h1 text-2xl text-center`;
 
 </script>
 
@@ -11,6 +11,6 @@
 	<title>Tidal Waves</title>
 </svelte:head>
 
-<h1 class={h1Styles}>Index</h1>
+<h1 class={h1Styles}>Elkorn Slough Tidal Projections</h1>
 
 <DataGetter />

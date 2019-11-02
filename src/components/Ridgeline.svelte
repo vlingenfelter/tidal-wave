@@ -117,10 +117,11 @@
         .attr("stroke-width", 15)
         .attr("d", line)
         .on('mousemove', d => {
+          let thisDate = d[0].date;
           tooltipX = d3.event.pageX;
           tooltipY = d3.event.pageY - (height/2);
           visible = true;
-          text = 'A day in november';
+          text = thisDate;
         })
         .on('mouseout', d => { 
           visible = false; 

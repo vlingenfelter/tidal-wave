@@ -9,8 +9,8 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
-    "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w",
-    "build:tailwind": "NODE_ENV=production postcss static/tailwind.css -o static/index.css",
+    "watch:tailwind": "postcss static/tailwind.css -o static/bundle.css -w",
+    "build:tailwind": "NODE_ENV=production postcss static/tailwind.css -o static/bundle.css",
     "build": "npm run build:tailwind && sapper build --legacy"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "compression": "^1.7.1",
     "d3": "^5.12.0",
     "fa-svelte": "^3.0.0",
+    "now": "^16.4.4",
     "polka": "next",
     "sirv": "^0.4.0"
   },
