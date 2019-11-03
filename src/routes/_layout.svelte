@@ -1,5 +1,6 @@
 <script>
 	import Nav from '../components/Nav.svelte';
+	import Footer from '../components/Footer.svelte';
 	import { theme } from '../stores';
 
 	export let segment;
@@ -12,3 +13,5 @@
 <main class={bodyStyles}>
 	<slot></slot>
 </main>
+
+<Footer />

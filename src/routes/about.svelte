@@ -10,7 +10,9 @@
 </svelte:head>
 
 <div class='pl-8'>
-<h1 class={h1Styles}>About this site</h1>
+  <h1 class={h1Styles}>About this site</h1>
 
-<p class={pStyles}>This is the 'about' page. There's not much here.</p>
+  <p class={pStyles}>
+  	This is the 'about' page. There's not much here.
+  </p>
 </div>

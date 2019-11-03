@@ -13,16 +13,8 @@
   $: buttonStyles = `flex items-center px-3 py-2 border rounded text-${$theme}-h1 border-${$theme}-h1 hover:text-${$theme}-p hover:border-${$theme}-p`;
   $: darkThemeStyes = `lg:mt-0 mt-4 ${hidden}`;
 
-  $: {
-    if (w < 1023) {
-      hidden = 'hidden';
-    } else {
-      hidden = '';
-    }
-  }
-
   const onClick = () => {
-    if (hidden == '') {
+    if (hidden == '' && w < 1023) {
       hidden = 'hidden';
     } else {
       hidden = '';

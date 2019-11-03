@@ -1,5 +1,5 @@
 <script>
-	import DataGetter from '../components/DataGetter.svelte';
+	import Ridgeline from '../components/Ridgeline.svelte';
 	import { theme, today } from '../stores';
 
 	$: backgroundStyles = `bg-${$theme}-background`;
@@ -11,6 +11,6 @@
 	<title>Tidal Waves</title>
 </svelte:head>
 
-<h1 class={h1Styles}>Elkorn Slough Tidal Projections</h1>
+<h1 class={h1Styles}>Moss Landing Tidal Projections</h1>
 
-<DataGetter />
+<Ridgeline />
