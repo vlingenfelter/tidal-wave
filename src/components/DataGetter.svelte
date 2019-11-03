@@ -1,11 +1,14 @@
 <script>
 	import { onMount } from 'svelte';
+	import { today, lastDay } from '../stores';
+	import { get } from 'svelte/store';
 	import Ridgeline from './Ridgeline.svelte';
 
-	$: url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=20191101&end_date=20191129&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
-
+	let url = '';
   let data = [];
   let loaded = false;
+
+  $: url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
 
   $: {
   	loaded = false
@@ -33,4 +36,6 @@
 
 {#if loaded}
 	<Ridgeline data={data} />
+{:else}
+	<h2>Loading...</h2>
 {/if}

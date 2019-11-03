@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { theme } from '../stores';
+	import { theme, today, lastDay } from '../stores';
 	import { get } from 'svelte/store';
 	import * as d3 from 'd3';
 	import Tooltip from './Tooltip.svelte';
@@ -25,6 +25,7 @@
 
 	let el;
 	let w;
+  let h;
 	let width;
 	let height;
 	let xScale;
@@ -57,16 +58,25 @@
     }
   }
 
+  const maxHeight = () => {
+    let h = (maxWidth()/1.63);
+    if (h < 500) {
+      return 500;
+    } else {
+      return h;
+    }
+  }
+
 	onMount(() => {
     console.log(w);
     svg = d3.select(el)
-    	.attr('height', 500)
+    	.attr('height', maxHeight())
     	.attr('width',  maxWidth())
       .append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
     width = maxWidth() - margin.left - margin.right;
-    height = 500 - margin.top - margin.bottom;
+    height = maxHeight() - margin.top - margin.bottom;
 
     xScale = d3.scaleLinear()
       .domain([0, 24]) 
@@ -119,7 +129,8 @@
         .on('mousemove', d => {
           let thisDate = d[0].date;
           tooltipX = d3.event.pageX;
-          tooltipY = d3.event.pageY - (height/2);
+          tooltipY = d3.event.pageY;
+
           visible = true;
           text = thisDate;
         })
@@ -138,7 +149,7 @@
 </script>
 
 
-<div bind:clientWidth={w} class='flex justify-center'>
+<div bind:clientWidth={w} bind:clientHeight={h} class='flex justify-center'>
 	<svg bind:this={el}></svg>
 	<Tooltip {tooltipX} {tooltipY} {visible} {text} />
 </div>

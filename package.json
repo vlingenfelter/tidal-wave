@@ -10,7 +10,7 @@
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
     "watch:tailwind": "postcss static/tailwind.css -o static/bundle.css -w",
-    "build:tailwind": "NODE_ENV=production postcss static/tailwind.css -o static/bundle.css",
+    "build:tailwind": "postcss static/tailwind.css -o static/bundle.css",
     "build": "npm run build:tailwind && sapper build --legacy"
   },
   "dependencies": {

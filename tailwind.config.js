@@ -15,13 +15,9 @@ module.exports = {
           p: '#ffffff',
           h1: '#ffcdcd',
           h2: '#ffe6eb',
-        }
-    		// lighter-pink: '#ffe6eb',
-    		// light-pink: '#ffcdcd',
-    		// bright-purple: '#6a65d8',
-    		// regal-purple: '#1d2786',
-    	}
-    }
+        },
+    	},
+    },
   },
   variants: {},
   plugins: []

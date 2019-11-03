@@ -4,7 +4,7 @@
 
 	export let segment;
 
-	$: navStyles = `font-mono flex items-center justify-between flex-wrap bg-${$theme}-nav p-6`;
+	$: navStyles = `font-mono flex items-center justify-between flex-wrap bg-${$theme}-nav py-6 px-16`;
 	$: titleStyles = `font-extrabold text-3xl text-${$theme}-h1 tracking-wider`;
 	$: anchorStyles = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p hover:underline`;
 
