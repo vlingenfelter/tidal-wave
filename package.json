@@ -11,7 +11,8 @@
     "test": "run-p --race dev cy:run",
     "watch:tailwind": "postcss static/tailwind.css -o static/bundle.css -w",
     "build:tailwind": "postcss static/tailwind.css -o static/bundle.css",
-    "build": "npm run build:tailwind && sapper build --legacy"
+    "build": "npm run build:tailwind && sapper build",
+    "deploy": "npm run build && npm run start"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
@@ -21,7 +22,8 @@
     "fa-svelte": "^3.0.0",
     "now": "^16.4.4",
     "polka": "next",
-    "sirv": "^0.4.0"
+    "sirv": "^0.4.0",
+    "surge": "^0.21.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
