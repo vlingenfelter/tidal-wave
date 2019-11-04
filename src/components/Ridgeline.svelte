@@ -8,10 +8,9 @@
   let data = [];
   let loaded = false;
 
-  $: url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
+  onMount(() => {
+  	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
 
-  $: {
-  	loaded = false
   	fetch(url)
   		.then(response => response.json())
   		.then(json => {
@@ -30,7 +29,7 @@
   			});
   			loaded = true;
   		});
-  }
+  });
 
 </script>
 
