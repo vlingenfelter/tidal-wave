@@ -1,5 +1,6 @@
 <script>
 	import { theme } from '../stores';
+  import { onMount } from 'svelte';
 	import DarkTheme from './DarkTheme.svelte';
 
 	export let segment;
@@ -8,18 +9,27 @@
   let w;
 
 	$: navStyles = `font-mono flex items-center justify-between flex-wrap bg-${$theme}-nav py-6 px-16`;
-	$: titleStyles = `font-extrabold text-3xl text-${$theme}-h1 tracking-wider`;
+	$: titleStyles = `font-extrabold text-xl lg:text-3xl text-${$theme}-h1 tracking-wider`;
 	$: anchorStyles = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p hover:underline ${hidden}`;
   $: buttonStyles = `flex items-center px-3 py-2 border rounded text-${$theme}-h1 border-${$theme}-h1 hover:text-${$theme}-p hover:border-${$theme}-p`;
   $: darkThemeStyes = `lg:mt-0 mt-4 ${hidden}`;
 
   const onClick = () => {
-    if (hidden == '' && w < 1023) {
+    if (hidden == '' && w < 1024) {
       hidden = 'hidden';
     } else {
       hidden = '';
     }
   }
+
+  onMount(() => {
+    if (w >= 1023) {
+      hidden = '';
+    } else {
+      hidden = 'hidden';
+    }
+  });
+
 </script>
 
 <nav class={navStyles} bind:clientWidth={w}>

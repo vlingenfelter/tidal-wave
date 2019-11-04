@@ -12,5 +12,4 @@
 </svelte:head>
 
 <h1 class={h1Styles}>Moss Landing Tidal Projections</h1>
-
 <Ridgeline />
