@@ -49,6 +49,9 @@
       <span class={anchorStyles}>
       	<a class='{segment === "about" ? "selected" : ""}' href='about'>about</a>
       </span>
+      <span class={anchorStyles}>
+        <a class='{segment === "vertical" ? "selected" : ""}' href='vertical'>vertical</a>
+      </span>
     </div>
     <div class={darkThemeStyes}>
       <DarkTheme />
