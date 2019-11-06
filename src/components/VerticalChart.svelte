@@ -8,6 +8,7 @@
 	export let data;
 
   let legendData = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+  let legendData2 = [19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5];
 
 	const max = d3.max(data.map(d => d.v));
   const min = d3.min(data.map(d => d.v));
@@ -36,6 +37,7 @@
 	let svg;
   let legend;
   let legendScale;
+  let legendScale2;
 
 	let visible = false;
 	let tooltipX;
@@ -72,6 +74,8 @@
   const legendFormat = (t) => {
     if (t == 12) {
       return `${t}p`;
+    } else if (t==0) {
+      return `12a`;
     } else if (t >12) {
       return `${t - 12}p`;
     } else {
@@ -161,6 +165,11 @@
       .range([0, legendWidth()])
       .padding(1);
 
+    legendScale2 = d3.scaleBand()
+      .domain(legendData2)
+      .range([0, legendWidth()])
+      .padding(1);
+
     yScale = d3.scaleLinear()
       .domain([min, max]) // input 
       .range([height, 0]); // output 
@@ -198,7 +207,7 @@
         .attr('stroke', d => circleStroke(get(theme), d.timeDec))
         .attr('stroke-width', 2)
         .on('mousemove', d => {
-          let thisDate = d.v;
+          let thisDate = `${d.v} at ${d.timeDec}`;
           tooltipX = d3.event.pageX;
           tooltipY = d3.event.pageY;
           visible = true;
@@ -209,38 +218,82 @@
           text = '';
         });
 
-    // legend = svg.append('g')
-    //   .attr('transform', `translate(0,${height + 30})`);
+    legend = svg.append('g')
+      .attr('transform', `translate(0,${height + 60})`);
 
-    // legend.append('text')
-    //   .attr('class', 'legend title')
-    //   .attr('x', width / 2)
-    //   .attr('y', 0-(margin.top/ 2))
-    //   .attr('text-anchor', 'middle')
-    //   .style('font-family', 'monospace')
-    //   .attr('fill', lineStroke(get(theme)))
-    //   .text('Legend');
+    legend.append('rect')
+      .attr('class', 'legend-rect')
+      .attr('x', width/2 - legendWidth()/2)
+      .attr('y', 0-margin.top-5)
+      .attr('width', legendWidth())
+      .attr('height', margin.top * 5 + 5)
+      .attr('fill', 'none')
+      .attr('stroke', lineStroke(get(theme)))
+      .attr('stroke-width', 2)
+      .attr('stroke-dasharray', '15 5');
 
-    // legend.append('g')
-    //   .attr('transform', `translate(${width/2 - legendWidth()/2}, ${margin.top})`)
-    //   .call(d3.axisBottom(legendScale).tickFormat(legendFormat))
-    //   .call(g => g.select('.domain').remove())
-    //   .call(g => g.selectAll('.tick').selectAll('line').remove())
-    //   .call(g => g.selectAll('.tick').selectAll('text').style('font-family', 'monospace'));
+    legend.append('text')
+      .attr('class', 'legend title')
+      .attr('x', width / 2)
+      .attr('y', 0-(margin.top/ 2))
+      .attr('text-anchor', 'middle')
+      .style('font-family', 'monospace')
+      .attr('fill', lineStroke(get(theme)))
+      .text('Legend');
 
-    //  legend.append('g')
-    //   .attr('transform', `translate(${width/2 - legendWidth()/2}, ${margin.top + margin.top})`)
-    //   .selectAll('.circle')
-    //     .data(legendData)
-    //     .enter()
-    //     .append('circle')
-    //     .attr('class', 'circle')
-    //     .attr('cx', d => legendScale(d))
-    //     .attr('cy', 0 - margin.top - 20)
-    //     .attr('fill', d => circleFill(get(theme), d))
-    //     .attr('stroke', d => circleStroke(get(theme), d))
-    //     .attr('stroke-width', 2)
-    //     .attr('r', d => circleRadius(d));
+    legend.append('g')
+      .attr('transform', `translate(${width/2 - legendWidth()/2}, ${margin.top})`)
+      .call(d3.axisBottom(legendScale).tickFormat(legendFormat))
+      .call(g => g.select('.domain')
+        .remove())
+      .call(g => g.selectAll('.tick')
+        .selectAll('line')
+        .remove())
+      .call(g => g.selectAll('.tick')
+        .selectAll('text')
+        .attr('fill', lineStroke(get(theme)))
+        .style('font-family', 'monospace'));
+
+     legend.append('g')
+      .attr('transform', `translate(${width/2 - legendWidth()/2}, ${margin.top * 2})`)
+      .selectAll('.circle-legend')
+        .data(legendData)
+        .enter()
+        .append('circle')
+        .attr('class', 'circle-legend')
+        .attr('cx', d => legendScale(d))
+        .attr('cy', 0 - margin.top - 20)
+        .attr('fill', d => circleFill(get(theme), d))
+        .attr('stroke', d => circleStroke(get(theme), d))
+        .attr('stroke-width', 2)
+        .attr('r', d => circleRadius(d));
+
+    legend.append('g')
+      .attr('transform', `translate(${width/2 - legendWidth()/2}, ${margin.top * 3})`)
+      .call(d3.axisBottom(legendScale2).tickFormat(legendFormat))
+      .call(g => g.select('.domain')
+        .remove())
+      .call(g => g.selectAll('.tick')
+        .selectAll('line')
+        .remove())
+      .call(g => g.selectAll('.tick')
+        .selectAll('text')
+        .attr('fill', lineStroke(get(theme)))
+        .style('font-family', 'monospace'));
+
+     legend.append('g')
+      .attr('transform', `translate(${width/2 - legendWidth()/2}, ${margin.top * 4})`)
+      .selectAll('.circle-legend')
+        .data(legendData2)
+        .enter()
+        .append('circle')
+        .attr('class', 'circle-legend')
+        .attr('cx', d => legendScale2(d))
+        .attr('cy', 0 - margin.top - 20)
+        .attr('fill', d => circleFill(get(theme), d))
+        .attr('stroke', d => circleStroke(get(theme), d))
+        .attr('stroke-width', 2)
+        .attr('r', d => circleRadius(d));
   });
 
   $: {
@@ -253,9 +306,12 @@
       .attr('fill', d => circleFill(get(theme), d.timeDec))
       .attr('stroke', d => circleStroke(get(theme), d.timeDec));
 
-    d3.selectAll('.legend.title')
-      .transition()
-      .attr('fill', d => lineStroke($theme));
+    d3.selectAll('.circle-legend').transition()
+      .attr('fill', d => circleFill(get(theme), d))
+      .attr('stroke', d => circleStroke(get(theme), d));
+    d3.selectAll('.legend-rect').transition().attr('stroke', lineStroke($theme));
+    d3.selectAll('.legend.title').transition().attr('fill', lineStroke($theme));
+    d3.selectAll('.tick').selectAll('text').transition().attr('fill',lineStroke($theme));
 	}
 
 </script>
