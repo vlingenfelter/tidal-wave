@@ -7,16 +7,9 @@
 
 	export let data;
 
-	console.log(data);
-
 	let max = d3.max(data.map(d => d.v));
   let min = d3.min(data.map(d => d.v));
-
-	let dataByDate = d3.nest()
-  	.key(function(d) { return d.date; })
-  	.entries(data);
-
-  console.log(dataByDate);
+  let n = data.length;
 
 	let el;
 	let w;
@@ -32,7 +25,7 @@
 	let tooltipY;
 	let text = '';
 
-	const margin = { top: 30, right: 30, bottom: 30, left: 60 };
+	let margin = { top: 30, right: 30, bottom: 30, left: 60 };
 	
   const lineStroke = (theme) => {
 		if (theme == 'light') {
@@ -51,7 +44,11 @@
   }
 
   const maxHeight = () => {
-    return maxWidth()/2;
+    if (maxWidth() > 700) {
+      return maxWidth()/2;
+    } else {
+      return 350;
+    }
   }
 
 	onMount(() => {
@@ -61,12 +58,17 @@
       .append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
+    if (maxWidth() < 450) {
+      margin = { top: 30, right: 5, bottom: 30, left: 50 };
+      n = data.length/2;
+    }
+
     width = maxWidth() - margin.left - margin.right;
     height = maxHeight() - margin.top - margin.bottom;
 
     xScale = d3.scaleLinear()
-    	.domain([0, data.length]) 
-    	.range([0, width - 60]); 
+    	.domain([0, n]) 
+    	.range([0, width - margin.right]); 
 
     yScale = d3.scaleLinear()
     	.domain([min, max]) // input 
@@ -85,7 +87,7 @@
       .attr('class', 'sea-level')
       .attr('x', xScale(0))
       .attr('y', yScale(0))
-      .attr('width', width - 60)
+      .attr('width', width - margin.right)
       .attr('height', 1.5)
       .attr('fill', lineStroke(get(theme)))
       .attr('stroke', 'none');

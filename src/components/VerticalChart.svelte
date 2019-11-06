@@ -22,7 +22,7 @@
   	.entries(data);
 
   // get all the days in question
-  const days = dataByDate.map(d => d.key);
+  let days = dataByDate.map(d => d.key);
   const n = days.length;
 
   // variables for svg creation
@@ -45,7 +45,7 @@
 	let tooltipY;
 	let text = '';
 
-	const margin = { top: 30, right: 30, bottom: 230, left: 30 };
+	let margin = { top: 30, right: 30, bottom: 230, left: 30 };
 
   // calculate the width for the svg
   const maxWidth = () => {
@@ -158,6 +158,7 @@
     	.attr('width',  maxWidth())
       .append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`);
+
 
     width = maxWidth() - margin.left - margin.right;
     height = maxHeight() - margin.top - margin.bottom;
