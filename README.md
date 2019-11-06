@@ -1,5 +1,23 @@
 # Tidal Wave (https://tidal-wave.surge.sh)
 
+## Getting started
+
+To have a live reloading version of the site running locally for development, navigate to the root of the project directory and run:
+```
+npm run watch:tailwind
+```
+This will ensure that your postcss is being live reloaded. And in a seperate terminal window, run the following: 
+```
+npm run dev
+```
+
+To push changes to the production version of the site, navigate to the root of the project directory:
+```
+npm run export
+cd __sapper__/export
+npx surge --domain https://tidal-wave.surge.sh
+```
+
 ### Resources & Links
  - Color palette inspired by [this ColorHunt palette](https://colorhunt.co/palette/112238?ref=tab).
  - Data from the [National Oceanic and Atmospheric Association](https://noaa.gov).
