@@ -5,30 +5,32 @@
 	import * as d3 from 'd3';
 	import Tooltip from './Tooltip.svelte';
 
-	export let data;
+	export let data; // the dataset to be visualized
 
-  let legendData = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-  let legendData2 = [19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5];
+  const legendData = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]; // top row of legend
+  const legendData2 = [19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5]; // bottom row of legend
 
+  // statistics for making chart
 	const max = d3.max(data.map(d => d.v));
   const min = d3.min(data.map(d => d.v));
-  let minDate = d3.min(data.map(d => d.date));
-  let maxDate = d3.max(data.map(d => d.date));
+  const minDate = d3.min(data.map(d => d.date));
+  const maxDate = d3.max(data.map(d => d.date));
 
-	let dataByDate = d3.nest()
+  // reformat data to be suitable for this chart
+	const dataByDate = d3.nest()
   	.key(function(d) { return d.date; })
   	.entries(data);
 
-  let days = dataByDate.map(d => d.key);
-  let n = days.length;
+  // get all the days in question
+  const days = dataByDate.map(d => d.key);
+  const n = days.length;
 
-  console.log(dataByDate);
-
-	let el;
-	let w;
-  let h;
-	let width;
-	let height;
+  // variables for svg creation
+	let el; // bound to the svg
+	let w; // bound to the width of the svg container
+  let h; // bound to the height of the svg container
+	let width; // will be the adjusted width for the svg
+	let height; 
 	let xScale;
 	let yScale;
   let xAxis;
@@ -38,7 +40,6 @@
   let legend;
   let legendScale;
   let legendScale2;
-
 	let visible = false;
 	let tooltipX;
 	let tooltipY;
@@ -46,6 +47,7 @@
 
 	const margin = { top: 30, right: 30, bottom: 230, left: 30 };
 
+  // calculate the width for the svg
   const maxWidth = () => {
     if (w > 1000) {
       return 1000
@@ -54,6 +56,7 @@
     }
   }
 
+  // calculate the width for the legend
   const legendWidth = () => {
     if (w < 450) {
       return w;
@@ -62,6 +65,7 @@
     }
   }
 
+  // calculate the height for the svg
   const maxHeight = () => {
     let h = (maxWidth()/1.63);
     if (h < 700) {
@@ -71,6 +75,7 @@
     }
   }
 
+  // formatter for the legend (turns int to readable times)
   const legendFormat = (t) => {
     if (t == 12) {
       return `${t}p`;
@@ -83,6 +88,7 @@
     }
   }
 
+  // update the color of the lines based on theme
 	const lineStroke = (theme) => {
 		if (theme == 'light') {
 			return '#6a65d8';
@@ -91,10 +97,11 @@
 		}
 	}
 
+  // update the circles based on theme and data circle represents
   const circleFill = (theme, timeDec) => {
     let day = (timeDec >= 6) && (timeDec <= 18);
     let light = (theme == 'light');
-    if (day) {
+    if (day) { 
       if (light) {
         return '#fff0f3'; // light theme background color
       } else {
@@ -107,7 +114,7 @@
         return '#353941'; // dark theme background color
       }
     }
-  }
+  } 
 
   const circleStroke = (theme, timeDec) => {
     let day = (timeDec >= 6) && (timeDec <= 18);
@@ -132,7 +139,7 @@
     const add = (maxWidth() == 1000) ? 4 : 0;
     if (day) {
       if (timeDec > 12) {
-        return parseInt(21 - timeDec) + add;
+        return parseInt(21 - timeDec) + add; 
       } else {
         return parseInt(timeDec - 3) + add;
       }
@@ -187,7 +194,6 @@
       .data(dataByDate)
       .enter()
       .append('path')
-        // .attr("transform", function(d){return("translate(0," + (yName(d.key)) +")" )})
         .attr('class', d => `line date-${d.key}`)
         .datum(d => d.values)
         .attr("fill", 'none')
@@ -295,17 +301,19 @@
         .attr('stroke-width', 2)
         .attr('r', d => circleRadius(d));
   });
-
+  
+  // listen for theme change
   $: {
+    // update the chart components
   	d3.selectAll('.line')
       .transition()
       .attr('stroke', lineStroke($theme));
-
     d3.selectAll('.circle')
       .transition()
       .attr('fill', d => circleFill(get(theme), d.timeDec))
       .attr('stroke', d => circleStroke(get(theme), d.timeDec));
 
+    // update the legend components
     d3.selectAll('.circle-legend').transition()
       .attr('fill', d => circleFill(get(theme), d))
       .attr('stroke', d => circleStroke(get(theme), d));

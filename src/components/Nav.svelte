@@ -44,13 +44,13 @@
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm lg:flex-grow">
       <span class={anchorStyles}>
-      	<a class='{segment === undefined ? "selected" : ""}' href='.'>home</a>
+      	<a class='{segment === undefined ? "selected" : ""}' rel='prefetch' href='.'>home</a>
       </span>
       <span class={anchorStyles}>
-      	<a class='{segment === "about" ? "selected" : ""}' href='about'>about</a>
+      	<a class='{segment === "about" ? "selected" : ""}' rel='prefetch' href='about'>about</a>
       </span>
       <span class={anchorStyles}>
-        <a class='{segment === "vertical" ? "selected" : ""}' href='vertical'>vertical</a>
+        <a class='{segment === "charts" ? "selected" : ""}' rel='prefetch' href='charts'>charts</a>
       </span>
     </div>
     <div class={darkThemeStyes}>

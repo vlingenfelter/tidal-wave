@@ -5,7 +5,7 @@
 
 	export let segment;
 
-	$: bodyStyles = `p-6 bg-${$theme}-background`;
+	$: bodyStyles = `p-12 bg-${$theme}-background`;
 </script>
 
 <Nav {segment}/>

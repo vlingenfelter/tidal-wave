@@ -7,8 +7,6 @@
 
 	export let data;
 
-	console.log(data);
-
 	const max = d3.max(data.map(d => d.v));
   const min = d3.min(data.map(d => d.v));
   let minDate = d3.min(data.map(d => d.date));
@@ -17,8 +15,6 @@
 	let dataByDate = d3.nest()
   	.key(function(d) { return d.date; })
   	.entries(data);
-
-  console.log(dataByDate);
 
   let days = dataByDate.map(d => d.key);
   let n = days.length;
@@ -68,7 +64,6 @@
   }
 
 	onMount(() => {
-    console.log(w);
     svg = d3.select(el)
     	.attr('height', maxHeight())
     	.attr('width',  maxWidth())

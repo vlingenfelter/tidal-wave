@@ -31,8 +31,9 @@
 	let tooltipY;
 	let text = '';
 
-	const margin = { top: 20, right: 20, bottom: 20, left: 20 };
-	const lineStroke = (theme) => {
+	const margin = { top: 30, right: 30, bottom: 30, left: 30 };
+	
+  const lineStroke = (theme) => {
 		if (theme == 'light') {
 			return '#6a65d8';
 		} else {
@@ -40,33 +41,47 @@
 		}
 	}
 
+  const maxWidth = () => {
+    if (w > 1000) {
+      return 1000
+    } else {
+      return w;
+    }
+  }
+
+  const maxHeight = () => {
+    return maxWidth()/2;
+  }
+
 	onMount(() => {
     svg = d3.select(el)
-    	.attr('height', 500)
-    	.attr('width',  w);
+    	.attr('height', maxHeight())
+    	.attr('width',  maxWidth())
+      .append('g')
+      .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-    width = w - margin.left - margin.right;
-    height = 500 - margin.top - margin.bottom;
+    width = maxWidth() - margin.left - margin.right;
+    height = maxHeight() - margin.top - margin.bottom;
 
     xScale = d3.scaleLinear()
     	.domain([0, data.length]) 
-    	.range([0, width]); 
+    	.range([0, width - 60]); 
 
     yScale = d3.scaleLinear()
     	.domain([0, max]) // input 
-    	.range([height, 0]); // output 
+    	.range([height - 60, 0]); // output 
 
     line = d3.line()
     	.x(function(d, i) { return xScale(i); }) // set the x values for the line generator
     	.y(function(d) { return yScale(d.v); }) // set the y values for the line generator 
     	.curve(d3.curveMonotoneX)
 
-    svg.append('g')
-    	.attr('transform', `translate(0,${height})`)
-    	.call(d3.axisBottom(xScale));
+    // svg.append('g')
+    // 	.attr('transform', `translate(0,${height})`)
+    // 	.call(d3.axisBottom(xScale));
 
-    svg.append('g')
-    	.call(d3.axisLeft(yScale));
+    // svg.append('g')
+    // 	.call(d3.axisLeft(yScale));
 
     svg.append('path')
     	.datum(data) // 10. Binds data to the line 
@@ -100,7 +115,7 @@
 </script>
 
 
-<div bind:clientWidth={w}>
+<div bind:clientWidth={w} class='flex justify-center'>
 	<svg bind:this={el}></svg>
 	<Tooltip {tooltipX} {tooltipY} {visible} {text} />
 </div>
