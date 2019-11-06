@@ -1,6 +1,7 @@
 <script>
 	import { theme } from '../stores';
   import { onMount } from 'svelte';
+  import { slide } from 'svelte/transition';
 	import DarkTheme from './DarkTheme.svelte';
 
 	export let segment;
@@ -10,9 +11,10 @@
 
 	$: navStyles = `font-mono flex items-center justify-between flex-wrap bg-${$theme}-nav py-6 px-16`;
 	$: titleStyles = `font-extrabold text-xl lg:text-3xl text-${$theme}-h1 tracking-wider`;
-	$: anchorStyles = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p hover:underline ${hidden}`;
+	$: anchorStyles = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p hover:underline`;
   $: buttonStyles = `flex items-center px-3 py-2 border rounded text-${$theme}-h1 border-${$theme}-h1 hover:text-${$theme}-p hover:border-${$theme}-p`;
-  $: darkThemeStyes = `lg:mt-0 mt-4 ${hidden}`;
+  $: darkThemeStyles = `lg:mt-0 mt-4 ${hidden}`;
+  $: dropdownStyles = `w-full block flex-grow lg:flex lg:items-center lg:w-auto`;
 
   const onClick = () => {
     if (hidden == '' && w < 1024) {
@@ -41,7 +43,8 @@
       <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
     </button>
   </div>
-  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+  {#if (!hidden)}
+  <div class={dropdownStyles} transition:slide>
     <div class="text-sm lg:flex-grow">
       <span class={anchorStyles}>
       	<a class='{segment === undefined ? "selected" : ""}' rel='prefetch' href='.'>home</a>
@@ -53,8 +56,9 @@
         <a class='{segment === "charts" ? "selected" : ""}' rel='prefetch' href='charts'>charts</a>
       </span>
     </div>
-    <div class={darkThemeStyes}>
+    <div class={darkThemeStyles}>
       <DarkTheme />
     </div>
   </div>
+  {/if}
 </nav>
