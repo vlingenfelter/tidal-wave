@@ -10,6 +10,7 @@
 	console.log(data);
 
 	let max = d3.max(data.map(d => d.v));
+  let min = d3.min(data.map(d => d.v));
 
 	let dataByDate = d3.nest()
   	.key(function(d) { return d.date; })
@@ -31,7 +32,7 @@
 	let tooltipY;
 	let text = '';
 
-	const margin = { top: 30, right: 30, bottom: 30, left: 30 };
+	const margin = { top: 30, right: 30, bottom: 30, left: 60 };
 	
   const lineStroke = (theme) => {
 		if (theme == 'light') {
@@ -68,8 +69,8 @@
     	.range([0, width - 60]); 
 
     yScale = d3.scaleLinear()
-    	.domain([0, max]) // input 
-    	.range([height - 60, 0]); // output 
+    	.domain([min, max]) // input 
+    	.range([height, 0]); // output 
 
     line = d3.line()
     	.x(function(d, i) { return xScale(i); }) // set the x values for the line generator
@@ -80,8 +81,38 @@
     // 	.attr('transform', `translate(0,${height})`)
     // 	.call(d3.axisBottom(xScale));
 
-    // svg.append('g')
-    // 	.call(d3.axisLeft(yScale));
+    svg.append('rect')
+      .attr('class', 'sea-level')
+      .attr('x', xScale(0))
+      .attr('y', yScale(0))
+      .attr('width', width - 60)
+      .attr('height', 1.5)
+      .attr('fill', lineStroke(get(theme)))
+      .attr('stroke', 'none');
+
+    svg.append('g')
+    	.call(d3.axisLeft(yScale).tickFormat(t => `${t}ft`))
+      .call(g => g.select('.domain')
+        .remove())
+      .call(g => g.selectAll('.tick')
+        .selectAll('line')
+        .remove())
+      .call(g => g.selectAll('.tick')
+        .selectAll('text')
+        .attr('fill', lineStroke(get(theme)))
+        .style('font-size', '1.25em')
+        .style('text-anchor', 'right')
+        .style('font-family', 'monospace'));
+
+     svg.append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('class', 'axis-label')
+      .attr('y', 0 - margin.left + 10)
+      .attr('x', 0 - (height / 2))
+      .style('text-anchor', 'middle')
+      .style('font-family', 'monospace')
+      .attr('fill', lineStroke(get(theme)))
+      .text('Distance from sea level'); 
 
     svg.append('path')
     	.datum(data) // 10. Binds data to the line 
@@ -103,6 +134,7 @@
       	tooltipX = d3.event.pageX;
       	tooltipY = d3.event.pageY - (height/2);
       	visible = true;
+        text = d.value;
       })
       .on('mouseout', (d) => { visible = false; });
   });
@@ -110,6 +142,9 @@
 
   $: {
   	d3.selectAll('.line').transition().attr('stroke', lineStroke($theme));
+    d3.selectAll('.sea-level').transition().attr('fill', lineStroke($theme));
+    d3.selectAll('.tick').selectAll('text').transition().attr('fill', lineStroke($theme));
+    d3.selectAll('.axis-label').transition().attr('fill', lineStroke($theme));
 	}
 
 </script>
