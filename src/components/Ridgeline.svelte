@@ -3,6 +3,7 @@
 	import { today, lastDay } from '../stores';
 	import { get } from 'svelte/store';
 	import RidgelineChart from './RidgelineChart.svelte';
+  import RidgelineHowTo from './RidgelineHowTo.svelte';
 
 	let url = '';
   let data = [];
@@ -35,6 +36,7 @@
 
 {#if loaded}
 	<RidgelineChart data={data} />
+  <RidgelineHowTo />
 {:else}
 	<h2>Loading...</h2>
 {/if}

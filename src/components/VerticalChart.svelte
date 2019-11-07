@@ -159,7 +159,6 @@
       .append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-
     width = maxWidth() - margin.left - margin.right;
     height = maxHeight() - margin.top - margin.bottom;
 
@@ -216,7 +215,7 @@
         .on('mousemove', d => {
           let thisDate = `${d.v} at ${d.timeDec}`;
           tooltipX = d3.event.pageX;
-          tooltipY = d3.event.pageY;
+          tooltipY = d3.event.pageY - (height/2);
           visible = true;
           text = thisDate;
         })
