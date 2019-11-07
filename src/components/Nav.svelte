@@ -13,22 +13,28 @@
 	$: titleStyles = `font-extrabold text-xl lg:text-3xl text-${$theme}-h1 tracking-wider`;
 	$: anchorStyles = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p hover:underline`;
   $: buttonStyles = `flex items-center px-3 py-2 border rounded text-${$theme}-h1 border-${$theme}-h1 hover:text-${$theme}-p hover:border-${$theme}-p`;
-  $: darkThemeStyles = `lg:mt-0 mt-4 ${hidden}`;
+  $: darkThemeStyles = `lg:mt-0 mt-4`;
   $: dropdownStyles = `w-full block flex-grow lg:flex lg:items-center lg:w-auto`;
 
   const onClick = () => {
-    if (hidden == '' && w < 1024) {
-      hidden = 'hidden';
+    if (!hidden && w < 1024) {
+      hidden = true;
     } else {
-      hidden = '';
+      hidden = false;
+    }
+  }
+
+  const linkSelected = () => {
+    if (w < 1024) {
+      hidden = true;
     }
   }
 
   onMount(() => {
     if (w >= 1023) {
-      hidden = '';
+      hidden = false;
     } else {
-      hidden = 'hidden';
+      hidden = true;
     }
   });
 
@@ -47,13 +53,13 @@
   <div class={dropdownStyles} transition:slide>
     <div class="text-sm lg:flex-grow">
       <span class={anchorStyles}>
-      	<a class='{segment === undefined ? "selected" : ""}' rel='prefetch' href='.'>home</a>
+      	<a class='{segment === undefined ? "selected" : ""}' rel='prefetch' href='.' on:click={linkSelected}>home</a>
       </span>
       <span class={anchorStyles}>
-      	<a class='{segment === "about" ? "selected" : ""}' rel='prefetch' href='about'>about</a>
+      	<a class='{segment === "about" ? "selected" : ""}' rel='prefetch' href='about' on:click={linkSelected}>about</a>
       </span>
       <span class={anchorStyles}>
-        <a class='{segment === "charts" ? "selected" : ""}' rel='prefetch' href='charts'>charts</a>
+        <a class='{segment === "charts" ? "selected" : ""}' rel='prefetch' href='charts' on:click={linkSelected}>charts</a>
       </span>
     </div>
     <div class={darkThemeStyles}>
