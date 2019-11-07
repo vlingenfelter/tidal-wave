@@ -24,6 +24,20 @@
 		blurb: 'Inspired by the classic line chart',
 		href: 'charts/vertical'
 	}
+
+	$: radial = {
+		img: `/radial-${$theme}.png`,
+		title: 'Radial',
+		blurb: 'Inspired by the classic line chart',
+		href: 'charts/radial'
+	}
+
+	$: glyph = {
+		img: `/glyph-${$theme}.png`,
+		title: 'Glyph',
+		blurb: 'Inspired by the classic line chart',
+		href: 'charts/glyph'
+	}
 	
 </script>
 
@@ -39,6 +53,8 @@
 		<ChartLink chart={line} />
 		<ChartLink chart={ridgeline} />
 		<ChartLink chart={vertical} />
+		<ChartLink chart={radial} />
+		<ChartLink chart={glyph} />
 
 	</div>
 </div>

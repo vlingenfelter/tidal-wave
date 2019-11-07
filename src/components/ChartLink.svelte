@@ -10,7 +10,7 @@
 
 	let hover = '';
 
-	const img = 'h-16 w-16 lg:h-32 lg:w-32';
+	let img = 'h-16 w-16 lg:h-32 lg:w-32';
 	const anchor = `flex flex-row items-center py-6`;
 	const caption = 'flex flex-col pl-8';
 
@@ -18,8 +18,14 @@
 	$: h1Styles = `font-mono text-${$theme}-h1 text-center text-2xl pb-8`;
 	$: h2Styles = `font-mono text-${$theme}-h1 text-xl ${hover}`;
 
-	const onMouseover = () => { hover = 'underline'; }
-	const onMouseout = () => { hover = ''; }
+	const onMouseover = () => { 
+		hover = 'underline';  
+		// img = 'h-20 w-20 lg:h-40 lg:w-40';
+	}
+	const onMouseout = () => { 
+		hover = ''; 
+		// img = 'h-16 w-16 lg:h-32 lg:w-32';
+	}
 
 </script>
 
