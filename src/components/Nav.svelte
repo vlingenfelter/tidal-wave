@@ -42,7 +42,7 @@
 
 <nav class={navStyles} bind:clientWidth={w}>
 	<div class="flex items-center flex-shrink-0 text-white mr-6">
-    <span class={titleStyles}>Tidal Waves</span>
+    <span class={titleStyles}>Tidal Wave</span>
   </div>
   <div class="block lg:hidden">
     <button class={buttonStyles} on:click={onClick}>

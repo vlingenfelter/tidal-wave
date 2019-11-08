@@ -1,12 +1,14 @@
 <script>
 	import { theme } from '../stores';
 
-	$: pStyles = `font-mono text-${$theme}-p`;
+	$: pStyles = `font-mono text-${$theme}-p pb-4`;
 	$: h1Styles = `font-mono text-${$theme}-h1 text-2xl pb-8`;
+  $: h1Styles2 = `font-mono text-${$theme}-h1 text-2xl py-8`;
+  $: anchorStyles = `hover:underline`
 </script>
 
 <svelte:head>
-	<title>About</title>
+	<title>About Tidal Wave</title>
 </svelte:head>
 
 <div class='pl-8'>
@@ -16,9 +18,9 @@
   	This is the 'about' page. There's not much here.
   </p>
 
-  <h1 class={h1Styles}>About me</h1>
+  <h1 class={h1Styles2}>About me</h1>
 
   <p class={pStyles}>
-  	No comment. 
+  	You can check out <a class={anchorStyles} href='https://violetlingenfelter.com'>my personal website</a> to see more of my projects. 
   </p>
 </div>

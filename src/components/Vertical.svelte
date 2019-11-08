@@ -29,7 +29,25 @@
   				}
   			});
   			loaded = true;
-  		});
+  		})
+      .catch(err => {
+        alert(err);
+
+        data = predictions.predictions.map(d => {
+          let date = d.t.split(' ')[0];
+          let time = d.t.split(' ')[1];
+          let decimal = (parseInt(time.split(':')[1])/60) + parseInt(time.split(':')[0]);
+          return {
+            t: d.t,
+            date: date,
+            time: time,
+            timeDec: decimal,
+            type: d.type,
+            v: parseFloat(d.v),
+          }
+        });
+        loaded = true;
+      });
   });
 
 </script>
