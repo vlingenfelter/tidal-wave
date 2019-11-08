@@ -5,13 +5,15 @@
 
 	export let segment;
 
-	$: bodyStyles = `p-12 bg-${$theme}-background`;
+	$: bodyStyles = `bg-${$theme}-background min-h-screen`;
 </script>
 
+<div class={bodyStyles}>
 <Nav {segment}/>
 
-<main class={bodyStyles}>
+<main class='p-12'>
 	<slot></slot>
 </main>
 
 <Footer />
+</div>

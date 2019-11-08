@@ -15,4 +15,10 @@
   <p class={pStyles}>
   	This is the 'about' page. There's not much here.
   </p>
+
+  <h1 class={h1Styles}>About me</h1>
+
+  <p class={pStyles}>
+  	No comment. 
+  </p>
 </div>

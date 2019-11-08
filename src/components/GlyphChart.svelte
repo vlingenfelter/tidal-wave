@@ -3,12 +3,12 @@
 	import { theme, today, lastDay } from '../stores';
 	import { get } from 'svelte/store';
 	import * as d3 from 'd3';
-	import Tooltip from './Tooltip.svelte';
 
 	export let data;
+  export let max;
+  export let min;
 
-	const max = d3.max(data.map(d => d.v));
-  const min = d3.min(data.map(d => d.v));
+  let yMin = d3.min(data.map(d => d.v));
   let date = d3.min(data.map(d => d.date));
 
   // let n = data.length;
@@ -55,7 +55,12 @@
   }
 
   const maxWidth = () => {
-    return 100;
+    if (w > 450) {
+      return 100;
+    } else {
+      return 70;
+    }
+    
   }
 
   const maxHeight = () => {
@@ -213,5 +218,4 @@
 
 <div bind:clientWidth={w} bind:clientHeight={h} class='flex justify-center'>
 	<svg bind:this={el}></svg>
-<!-- 	<Tooltip {tooltipX} {tooltipY} {visible} {text} /> -->
 </div>

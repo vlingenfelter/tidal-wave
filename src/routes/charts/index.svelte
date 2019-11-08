@@ -48,7 +48,7 @@
 <div class='flex justify-center'>
 	<div class='flex flex-col items-left'>
 
-	  <h1 class={h1Styles}>All the Charts</h1>
+	  <h1 class={h1Styles}>The charts:</h1>
 
 		<ChartLink chart={line} />
 		<ChartLink chart={ridgeline} />

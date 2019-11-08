@@ -6,7 +6,7 @@
 
 	export let segment;
 
-  let hidden = true;
+  let hidden = false;
   let w;
 
 	$: navStyles = `font-mono flex items-center justify-between flex-wrap bg-${$theme}-nav py-6 px-16`;

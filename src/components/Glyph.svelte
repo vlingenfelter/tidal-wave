@@ -1,13 +1,21 @@
 <script>
 	import { onMount } from 'svelte';
-	import { today, lastDay } from '../stores';
+	import { today, lastDay, theme } from '../stores';
 	import { get } from 'svelte/store';
 	import GlyphChart from './GlyphChart.svelte';
   import { nest } from 'd3-collection';
+  import { max, min } from 'd3-array';
 
 	let url = '';
   let data = [];
   let loaded = false;
+  let yMax;
+  let yMin;
+
+  const formatter = (date) => {
+    const arr = date.split('-');
+    return `${arr[1]}-${arr[2]}`;
+  }
 
   onMount(() => {
   	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
@@ -29,6 +37,9 @@
   				}
   			});
 
+        yMax = max(temp.map(d => d.v));
+        yMin = min(temp.map(d => d.v));
+
         data = nest()
           .key(function(d) { return d.date; })
           .entries(temp);
@@ -37,15 +48,17 @@
   		});
   });
 
+  $: h3Styles = `font-mono text-${$theme}-p`;
+
 </script>
 
 {#if loaded}
 <div class='flex justify-center'>
-  <div class='flex flex-wrap max-w-3xl p-2 lg:p-6'>
+  <div class='flex flex-wrap max-w-3xl p-1 lg:p-6'>
     {#each data as d}
-    <div class='flex flex-col p-2 lg:p-4'>
-      <!-- <h1>{d.key}</h1> -->
-      <GlyphChart data={d.values} />
+    <div class='flex flex-col items-center p-1 lg:p-4'>
+      <h3 class={h3Styles}>{formatter(d.key)}</h3>
+      <GlyphChart data={d.values} max={yMax} min={yMin}/>
     </div>
     {/each}
   </div>
