@@ -152,6 +152,11 @@
     }
   }
 
+  const formatter = (date) => {
+    const arr = date.split('-');
+    return `${arr[1]}-${arr[2]}`;
+  }
+
 	onMount(() => {
     svg = d3.select(el)
     	.attr('height', maxHeight())
@@ -213,7 +218,7 @@
         .attr('stroke', d => circleStroke(get(theme), d.timeDec))
         .attr('stroke-width', 2)
         .on('mousemove', d => {
-          let thisDate = `${d.v} at ${d.timeDec}`;
+          let thisDate = `${d.v} ft at ${d.time} on ${formatter(d.date)}`;
           tooltipX = d3.event.pageX;
           tooltipY = d3.event.pageY - (height/2);
           visible = true;

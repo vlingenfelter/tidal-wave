@@ -10,7 +10,7 @@
   let w;
 
 	$: navStyles = `font-mono flex items-center justify-between flex-wrap bg-${$theme}-nav py-6 px-16`;
-	$: titleStyles = `font-extrabold text-xl lg:text-3xl text-${$theme}-h1 tracking-wider`;
+	$: titleStyles = `font-extrabold text-xl lg:text-3xl text-${$theme}-h1 tracking-wider hover:underline`;
 	$: anchorStyles = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p hover:underline`;
   $: buttonStyles = `flex items-center px-3 py-2 border rounded text-${$theme}-h1 border-${$theme}-h1 hover:text-${$theme}-p hover:border-${$theme}-p`;
   $: darkThemeStyles = `lg:mt-0 mt-4`;
@@ -42,7 +42,7 @@
 
 <nav class={navStyles} bind:clientWidth={w}>
 	<div class="flex items-center flex-shrink-0 text-white mr-6">
-    <span class={titleStyles}>Tidal Wave</span>
+    <a class={titleStyles} rel='prefetch' href='.' on:click={linkSelected}>Tidal Wave</a>
   </div>
   <div class="block lg:hidden">
     <button class={buttonStyles} on:click={onClick}>
@@ -52,9 +52,6 @@
   {#if (!hidden)}
   <div class={dropdownStyles} transition:slide>
     <div class="text-sm lg:flex-grow">
-      <span class={anchorStyles}>
-      	<a class='{segment === undefined ? "selected" : ""}' rel='prefetch' href='.' on:click={linkSelected}>home</a>
-      </span>
       <span class={anchorStyles}>
       	<a class='{segment === "about" ? "selected" : ""}' rel='prefetch' href='about' on:click={linkSelected}>about</a>
       </span>
