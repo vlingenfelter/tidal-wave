@@ -1,5 +1,6 @@
 <script>
 	import { theme } from '../stores';
+  import Map from '../components/Map.svelte';
 
 	$: pStyles = `font-mono text-${$theme}-p pb-4`;
 	$: h1Styles = `font-mono text-${$theme}-h1 text-2xl pb-8`;
@@ -17,6 +18,8 @@
   <p class={pStyles}>
   	This is the 'about' page. There's not much here.
   </p>
+
+  <Map />
 
   <h1 class={h1Styles2}>About me</h1>
 

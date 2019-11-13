@@ -11,4 +11,3 @@
 </svelte:head>
 
 <h1 class={h1Styles}>Welcome to Tidal Wave.</h1>
-
