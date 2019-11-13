@@ -41,6 +41,14 @@
 		}
 	}
 
+	const background = (theme) => {
+    if (theme == 'light') {
+      return '#fff0f3';
+    } else {
+      return '#353941';
+    }
+  }
+
 	onMount(() => {
 	    svg = d3.select(el)
 	    	.attr('height', maxHeight())
@@ -63,6 +71,25 @@
       	.attr('fill', 'none')
       	.attr('stroke', lineStroke(get(theme)));
 
+      svg.append('text')
+      	.attr('class', 'moss-landing-buffer')
+        .attr('x', projection([-121.7900, 36.8017])[0])
+        .attr('y', projection([-121.7900, 36.8017])[1] + (margin.top * 1.5))
+        .style('text-anchor', 'start')
+      	.style('font-family', 'monospace')
+        .attr('stroke', background(get(theme)))
+        .attr('stroke-width', 5)
+        .text('Moss Landing');
+
+      svg.append('text')
+      	.attr('class', 'moss-landing-label')
+        .attr('x', projection([-121.7900, 36.8017])[0])
+        .attr('y', projection([-121.7900, 36.8017])[1] + (margin.top * 1.5))
+        .style('text-anchor', 'start')
+      	.style('font-family', 'monospace')
+        .attr('fill', d => get(theme) == 'light' ? '#000' : '#fff')
+        .text('Moss Landing');
+
       svg.append('circle')
       	.attr('class', 'moss-landing')
       	.attr('r', '3px')
@@ -74,6 +101,8 @@
 	$: {
 		d3.selectAll('.california').transition().attr('stroke', lineStroke($theme));
 		d3.selectAll('.moss-landing').transition().attr('fill', d => $theme == 'light' ? '#000' : '#fff');
+		d3.selectAll('.moss-landing-buffer').transition().attr('stroke', background($theme));
+		d3.selectAll('.moss-landing-label').transition().attr('fill', d => $theme == 'light' ? '#000' : '#fff');
 	}
 </script>
 
