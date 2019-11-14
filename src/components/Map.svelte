@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { theme } from '../stores';
-	import states from '../states';
+	import california from '../california';
 	import { get } from 'svelte/store';
 	import * as d3 from 'd3';
 
@@ -12,7 +12,7 @@
 	let projection;
 	let path;
 	let svg;
-  let california;
+  // let california;
   let mounted = false;
 
 	let margin = { top: 10, right: 10, bottom: 10, left: 10 };
@@ -50,7 +50,9 @@
   }
 
 	onMount(() => {
-      california = states.features.filter(d => d.properties['NAME'] == 'California')[0];
+      // california = states.features.filter(d => d.properties['NAME'] == 'California')[0];
+
+      // console.log(JSON.stringify(california));
 
 	    svg = d3.select(el)
 	    	.attr('height', maxHeight())
