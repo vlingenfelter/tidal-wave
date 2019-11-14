@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>Tidal Waves</title>
+	<title>Vertical | Tidal Waves</title>
 </svelte:head>
 
 <h1 class={h1Styles}>Moss Landing Tidal Projections</h1>

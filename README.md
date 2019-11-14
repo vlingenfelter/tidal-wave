@@ -1,4 +1,4 @@
-# Tidal Wave (https://tidal-wave.surge.sh)
+# Tidal Wave (https://tides.violetlingenfelter.com)
 
 ## Getting started
 

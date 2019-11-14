@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { today, lastDay } from '../stores';
+	import { today, lastDay , theme} from '../stores';
 	import { get } from 'svelte/store';
 	import LineChart from './LineChart.svelte';
   import LineHowTo from './LineHowTo.svelte';
@@ -32,11 +32,13 @@
   		});
   });
 
+  $: pStyles = `font-mono text-${$theme}-p pb-4`;
+
 </script>
 
 {#if loaded}
 	<LineChart data={data} />
   <LineHowTo />
 {:else}
-	<h2>Loading...</h2>
+	<h2 class={pStyles}>Loading...</h2>
 {/if}

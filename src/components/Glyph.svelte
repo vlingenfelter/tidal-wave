@@ -64,5 +64,5 @@
   </div>
 </div>
 {:else}
-	<h2>Loading...</h2>
+	<h2 class={h3Styles}>Loading...</h2>
 {/if}

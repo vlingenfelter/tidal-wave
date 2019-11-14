@@ -42,7 +42,7 @@
 </script>
 
 <svelte:head>
-	<title>Charts</title>
+	<title>Charts | Tidal Waves</title>
 </svelte:head>
 
 <div class='flex justify-center'>

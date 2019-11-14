@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { today, lastDay } from '../stores';
+	import { today, lastDay, theme } from '../stores';
 	import { get } from 'svelte/store';
 	import VerticalChart from './VerticalChart.svelte';
   import VerticalHowTo from './VerticalHowTo.svelte';
@@ -50,11 +50,13 @@
       });
   });
 
+  $: pStyles = `font-mono text-${$theme}-p pb-4 leading-relaxed`;
+
 </script>
 
 {#if loaded}
 	<VerticalChart data={data} />
   <VerticalHowTo />
 {:else}
-	<h2>Loading...</h2>
+	<h2 class={pStyles}>Loading...</h2>
 {/if}

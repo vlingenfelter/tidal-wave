@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { today, lastDay } from '../stores';
+	import { today, lastDay, theme } from '../stores';
 	import { get } from 'svelte/store';
 	import RidgelineChart from './RidgelineChart.svelte';
   import RidgelineHowTo from './RidgelineHowTo.svelte';
@@ -32,11 +32,12 @@
   		});
   });
 
+  $: pStyles = `font-mono text-${$theme}-p pb-4 leading-relaxed`;
 </script>
 
 {#if loaded}
 	<RidgelineChart data={data} />
   <RidgelineHowTo />
 {:else}
-	<h2>Loading...</h2>
+	<h2 class={pStyles}>Loading...</h2>
 {/if}

@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { today, lastDay } from '../stores';
+	import { today, lastDay, theme } from '../stores';
 	import { get } from 'svelte/store';
 	import RadialChart from './RadialChart.svelte';
 
@@ -31,10 +31,12 @@
   		});
   });
 
+  $: pStyles = `font-mono text-${$theme}-p pb-4 leading-relaxed`;
+
 </script>
 
 {#if loaded}
 	<RadialChart data={data} />
 {:else}
-	<h2>Loading...</h2>
+	<h2 class={pStyles}>Loading...</h2>
 {/if}
