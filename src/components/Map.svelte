@@ -12,8 +12,8 @@
 	let projection;
 	let path;
 	let svg;
-
-	const california = states.features.filter(d => d.properties['NAME'] == 'California')[0];
+  let california;
+  let mounted = false;
 
 	let margin = { top: 10, right: 10, bottom: 10, left: 10 };
 
@@ -50,6 +50,8 @@
   }
 
 	onMount(() => {
+      california = states.features.filter(d => d.properties['NAME'] == 'California')[0];
+
 	    svg = d3.select(el)
 	    	.attr('height', maxHeight())
 	    	.attr('width',  maxWidth())
@@ -96,9 +98,11 @@
         .attr('cx', projection([-121.7900, 36.8017])[0])
         .attr('cy', projection([-121.7900, 36.8017])[1])
         .attr('fill', d => get(theme) == 'light' ? '#000' : '#fff');
+
+      mounted = true;
 	  });
 
-	$: {
+	$: if (mounted) {
 		d3.selectAll('.california').transition().attr('stroke', lineStroke($theme));
 		d3.selectAll('.moss-landing').transition().attr('fill', d => $theme == 'light' ? '#000' : '#fff');
 		d3.selectAll('.moss-landing-buffer').transition().attr('stroke', background($theme));

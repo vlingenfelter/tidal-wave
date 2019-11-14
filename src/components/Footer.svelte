@@ -3,7 +3,7 @@
 
 	$: footerStyles = `font-mono flex items-center justify-center flex-wrap bg-${$theme}-nav py-6 px-16`;
   $: pStyles = `font-mono text-${$theme}-p text-center`;
-  $: anchorStyles = `text-${$theme}-p hover:underline`;
+  $: anchorStyles = `underline hover:text-${$theme}-h1`
 </script>
 
 <footer class={footerStyles}>

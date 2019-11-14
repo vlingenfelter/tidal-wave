@@ -3,9 +3,9 @@
   import Map from '../components/Map.svelte';
 
 	$: pStyles = `font-mono text-${$theme}-p pb-4 leading-relaxed`;
-	$: h1Styles = `font-mono text-${$theme}-h1 text-3xl py-4`;
+	$: h1Styles = `font-mono text-${$theme}-h1 text-3xl pb-4`;
   $: h2Styles = `font-mono text-${$theme}-h1 text-2xl py-8`;
-  $: anchorStyles = `hover:underline`
+  $: anchorStyles = `underline hover:text-${$theme}-h1`
 </script>
 
 <svelte:head>
