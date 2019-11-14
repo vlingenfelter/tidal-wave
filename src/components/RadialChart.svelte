@@ -65,6 +65,10 @@
       .attr('height', maxHeight())
       .attr('width',  maxWidth());
 
+    if (maxWidth < 450) {
+      margin = { top: 5, right: 5, bottom: 5, left: 5 };
+    }
+
     width = maxWidth() - margin.left - margin.right;
     height = maxHeight() - margin.top - margin.bottom;
     outerRadius = (maxWidth() - margin.top - margin.bottom) / 2;
@@ -119,7 +123,7 @@
               .attr('y', d => -yScale(d))
               .attr('dy', '0.35em')
               .attr('stroke', background(get(theme)))
-              .attr('stroke-width', 5)
+              .attr('stroke-width', 3)
               .text((x, i) => `${x.toFixed(0)}${i ? '' : 'ft'}`)
             .clone(true)
               .attr('y', d => yScale(d))

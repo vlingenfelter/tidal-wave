@@ -9,7 +9,7 @@
   let hidden = false;
   let w;
 
-	$: navStyles = `font-mono flex items-center justify-between flex-wrap bg-${$theme}-nav py-6 lg:px-16 md:px-16`;
+	$: navStyles = `font-mono flex items-center justify-between flex-wrap bg-${$theme}-nav py-6 px-8 lg:px-16`;
 	$: titleStyles = `font-extrabold text-xl lg:text-3xl text-${$theme}-h1 tracking-wider hover:underline`;
 	$: anchorStyles = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p lg:border-b-2 lg:border-transparent lg:hover:border-${$theme}-h1 hover:underline lg:hover:no-underline`;
   $: selected = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p lg:border-b-2 lg:border-dashed lg:border-${$theme}-h1 lg:hover:border-solid underline lg:no-underline`;

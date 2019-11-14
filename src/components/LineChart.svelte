@@ -60,7 +60,7 @@
 
     if (maxWidth() < 450) {
       margin = { top: 30, right: 5, bottom: 30, left: 50 };
-      n = data.length/2;
+      n = parseInt(data.length/2);
     }
 
     width = maxWidth() - margin.left - margin.right;

@@ -17,13 +17,13 @@
   const maxDate = d3.max(data.map(d => d.date));
 
   // reformat data to be suitable for this chart
-	const dataByDate = d3.nest()
+	let dataByDate = d3.nest()
   	.key(function(d) { return d.date; })
   	.entries(data);
 
   // get all the days in question
   let days = dataByDate.map(d => d.key);
-  const n = days.length;
+  let n = days.length;
 
   // variables for svg creation
 	let el; // bound to the svg
@@ -166,6 +166,14 @@
 
     width = maxWidth() - margin.left - margin.right;
     height = maxHeight() - margin.top - margin.bottom;
+
+    if (maxWidth() < 450) {
+      margin = { top: 30, right: 5, bottom: 30, left: 50 };
+      n = parseInt(days.length/2);
+      days = days.slice(0, n);
+      dataByDate = dataByDate.filter(d => days.indexOf(d.key) >= 0);
+      data = data.filter(d => days.indexOf(d.date) >= 0);
+    }
 
     xScale = d3.scaleBand()
       .domain(days)
