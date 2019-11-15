@@ -9,13 +9,32 @@
 
 	$: if (toggle) {
 		theme.set('dark');
-    if (mounted) { select('body').attr('class', 'bg-dark-background'); }
+    if (mounted) { 
+      select('body').attr('class', 'bg-dark-background'); 
+      updateCookie('dark');
+    }
 	} else {
 		theme.set('light');
-    if (mounted) {select('body').attr('class', 'bg-light-background'); }
+    if (mounted) { 
+      select('body').attr('class', 'bg-light-background'); 
+      updateCookie('light');
+    }
   }
 
-  onMount(() => { mounted = true });
+  const updateCookie = (theme) => {
+    document.cookie = `theme=${theme}`;
+  }
+
+  onMount(() => { 
+    let cookie = document.cookie;
+    
+    mounted = true;
+
+    if (cookie != '') {
+      let t = cookie.split('=')[1];
+      toggle = (t === 'dark');
+    }
+  });
 
   $: toggleLineStyles = `toggle__line w-10 h-4 bg-${$theme}-h1 rounded-full shadow-inner`;
   $: toggleDotStyles = `toggle__dot absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 left-0`;
