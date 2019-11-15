@@ -7,7 +7,7 @@
 </script>
 
 <footer class={footerStyles}>
-  <p class={pStyles}>Made with ❤️ in Boston, MA.
+  <p class={pStyles}>Made with ❤️ in Arlington, VA.
     <br >
     Powered by <a href='https://svelte.dev' class={anchorStyles}>Svelte</a>
   </p>

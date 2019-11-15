@@ -11,6 +11,13 @@
 		href: 'charts/line'
 	}
 
+	$: layered = {
+		img: `/layered-${$theme}.png`,
+		title: 'Layered',
+		blurb: 'Inspired by the classic timeseries chart',
+		href: 'charts/layered-line'
+	}
+
 	$: ridgeline = {
 		img: `/ridgeline-${$theme}.png`,
 		title: 'Ridgeline',
@@ -45,6 +52,8 @@
 		blurb: 'Inspired by the radial chart',
 		href: 'charts/star'
 	}
+
+	$: charts = [line, layered, ridgeline, vertical, radial, glyph, star];
 	
 </script>
 
@@ -57,12 +66,9 @@
 
 	  <h1 class={h1Styles}>The charts:</h1>
 
-		<ChartLink chart={line} />
-		<ChartLink chart={ridgeline} />
-		<ChartLink chart={vertical} />
-		<ChartLink chart={radial} />
-		<ChartLink chart={glyph} />
-		<ChartLink chart={star} />
+	  {#each charts as chart} 
+	  	<ChartLink chart={chart} />
+	  {/each}
 		
 	</div>
 </div>
