@@ -35,8 +35,15 @@
 	$: glyph = {
 		img: `/glyph-${$theme}.png`,
 		title: 'Glyph',
-		blurb: 'Inspired by the classic line chart',
+		blurb: 'Inspired by the radial chart',
 		href: 'charts/glyph'
+	}
+
+	$: star = {
+		img: `/star-${$theme}.png`,
+		title: 'Star',
+		blurb: 'Inspired by the radial chart',
+		href: 'charts/star'
 	}
 	
 </script>
@@ -55,6 +62,7 @@
 		<ChartLink chart={vertical} />
 		<ChartLink chart={radial} />
 		<ChartLink chart={glyph} />
-
+		<ChartLink chart={star} />
+		
 	</div>
 </div>
