@@ -11,5 +11,5 @@
 	<title>Vertical | Tidal Waves</title>
 </svelte:head>
 
-<h1 class={h1Styles}>Moss Landing Tidal Projections</h1>
+<h1 class={h1Styles}>The Vertical Chart</h1>
 <Vertical />

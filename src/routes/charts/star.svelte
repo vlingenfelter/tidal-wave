@@ -11,5 +11,5 @@
 	<title>Star | Tidal Waves</title>
 </svelte:head>
 
-<h1 class={h1Styles}>Moss Landing Tidal Projections</h1>
+<h1 class={h1Styles}>The Star Chart</h1>
 <Star />
