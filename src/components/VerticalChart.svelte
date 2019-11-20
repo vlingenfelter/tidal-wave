@@ -227,8 +227,8 @@
         .attr('stroke-width', 2)
         .on('mousemove', d => {
           let thisDate = `${d.v} ft at ${d.time} on ${formatter(d.date)}`;
-          tooltipX = d3.event.pageX;
-          tooltipY = d3.event.pageY - (height/2);
+          tooltipX = d3.event.pageX - margin.right;
+          tooltipY = d3.event.pageY - ((height - margin.top - margin.bottom)/2);
           visible = true;
           text = thisDate;
         })

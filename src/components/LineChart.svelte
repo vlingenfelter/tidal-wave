@@ -133,10 +133,10 @@
     	.attr('r', 5)
     	.style('opacity', 0)
       .on('mouseover', (d) => {
-      	tooltipX = d3.event.pageX;
-      	tooltipY = d3.event.pageY - (height/2);
+      	tooltipX = d3.event.pageX - margin.right;
+        tooltipY = d3.event.pageY - ((height - margin.top - margin.bottom)/2);
       	visible = true;
-        text = d.value;
+        text = `${d.v} ft`;
       })
       .on('mouseout', (d) => { visible = false; });
   });

@@ -58,13 +58,13 @@
 </script>
 
 <svelte:head>
-	<title>Charts | Tidal Waves</title>
+	<title>Tidal Charts | Tidal Waves</title>
 </svelte:head>
 
 <div class='flex justify-center'>
 	<div class='flex flex-col items-left'>
 
-	  <h1 class={h1Styles}>The charts:</h1>
+	  <h1 class={h1Styles}>Tidal Charts</h1>
 
 	  {#each charts as chart} 
 	  	<ChartLink chart={chart} />

@@ -123,8 +123,8 @@
         .attr("d", line)
         .on('mousemove', d => {
           let thisDate = d[0].date;
-          tooltipX = d3.event.pageX;
-          tooltipY = d3.event.pageY;
+          tooltipX = d3.event.pageX - margin.right;
+          tooltipY = d3.event.pageY - ((height - margin.top - margin.bottom)/2);
 
           visible = true;
           text = thisDate;

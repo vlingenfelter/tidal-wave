@@ -25,14 +25,29 @@
     document.cookie = `theme=${theme}`;
   }
 
+  const getCookie = (cookie) => {
+    let name = cookie + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return '';
+  }
+
   onMount(() => { 
-    let cookie = document.cookie;
-    
+    const cookie = getCookie('theme');
+    console.log(cookie);
     mounted = true;
 
     if (cookie != '') {
-      let t = cookie.split('=')[1];
-      toggle = (t === 'dark');
+      toggle = (cookie === 'dark');
     }
   });
 
