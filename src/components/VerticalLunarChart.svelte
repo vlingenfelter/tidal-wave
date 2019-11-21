@@ -103,19 +103,19 @@
 		}
 	}
 
-  const pathColor = (theme) => {
+ const pathColor = (theme) => {
     if (theme == 'light') {
-      return '#6a65d8';
+      return '#fff0f3';
     } else {
-      return '#353941';
+      return '#ffcdcd';
     }
   }
 
   const circleColor = (theme) => {
     if (theme == 'light') {
-      return '#fff0f3';
+      return '#6a65d8';
     } else {
-      return '#ffcdcd';
+      return '#353941';
     }
   }
 

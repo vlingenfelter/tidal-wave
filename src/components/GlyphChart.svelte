@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { theme, today, lastDay } from '../stores';
+	import { theme, today, lastDay, lunar } from '../stores';
 	import { get } from 'svelte/store';
 	import * as d3 from 'd3';
 
@@ -26,6 +26,9 @@
   let h;
 	let width;
 	let height;
+  let circle;
+  let projection;
+  let path;
 	let xScale;
 	let yScale;
   let xAxis;
@@ -36,7 +39,11 @@
   let line3;
 	let svg;
 
-  console.log(data);
+  let thisDate = data[0].date;
+  console.log(thisDate);
+
+  let moon = get(lunar).filter(d => d.date == thisDate)[0];
+  console.log(moon);
 
 	const margin = { top: 10, right: 10, bottom: 10, left: 10 };
 
@@ -61,8 +68,31 @@
       return 100;
     } else {
       return 70;
+    }  
+  }
+
+  const pathColor = (theme) => {
+    if (theme == 'light') {
+      return '#fff0f3';
+    } else {
+      return '#ffcdcd';
     }
-    
+  }
+
+  const circleColor = (theme) => {
+    if (theme == 'light') {
+      return '#6a65d8';
+    } else {
+      return '#353941';
+    }
+  }
+
+  const outlineColor = (theme) => {
+    if (theme == 'light') {
+      return '#6a65d8';
+    } else {
+      return '#ffcdcd';
+    }
   }
 
   const maxHeight = () => {
@@ -79,6 +109,15 @@
     height = maxHeight() - margin.top - margin.bottom;
     outerRadius = (maxWidth() - margin.top - margin.bottom) / 2;
     innerRadius = maxWidth() / 4;
+
+    circle = d3.geoCircle();
+
+    projection = d3.geoOrthographic()
+          .scale(outerRadius)
+          .translate([0, 0]);
+
+    path = d3.geoPath()
+          .projection(projection);
 
     xScale = d3.scaleBand()
       .domain(hours)
@@ -204,6 +243,22 @@
       .attr("stroke-width", 2)
       .attr("d", line);
 
+    svg.append('circle')
+      //.datum(moon)
+      .attr('class', 'circle')
+      .attr('fill', circleColor(get(theme)))
+      .attr('r', outerRadius)
+      .attr('stroke', outlineColor(get(theme)))
+      .attr('stroke-width', 2);
+
+    svg.append('path')
+      .datum(moon)
+      .attr('class', 'path')
+      .attr('fill', pathColor(get(theme)))
+      .attr('d', function (d){
+        return path(circle.center([parseFloat(d.phase), 0])());
+      });
+
   });
 
 
@@ -213,6 +268,13 @@
     d3.selectAll('.y-axis-text').transition().attr('fill', lineStroke($theme));
     d3.selectAll('.x-axis').transition().attr('fill', lineStroke($theme));
     d3.selectAll('.line').transition().attr('stroke', lineStroke($theme));
+    d3.selectAll('.circle')
+      .transition()
+      .attr('fill', circleColor(get(theme)))
+      .attr('stroke', outlineColor(get(theme)));
+    d3.selectAll('.path')
+      .transition()
+      .attr('fill', pathColor(get(theme)));
   }
 
 </script>
