@@ -36,6 +36,8 @@
   let line3;
 	let svg;
 
+  console.log(data);
+
 	const margin = { top: 10, right: 10, bottom: 10, left: 10 };
 
 	const lineStroke = (theme) => {

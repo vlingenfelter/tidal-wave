@@ -33,7 +33,9 @@ let lunarMonth = []
 for (let i = 0; i<30; i++) {
 	let ts = new Date(Date.now() + (i * 86400000));
 	let jd = julianDay(ts);
-	let phase = moonCycle(jd);
+	let newMoon = (new Date(1970, 0, 7, 20, 35, 0)).getTime();
+    let lunarPeriod = 2551443000;
+	let phase = -((ts.getTime() - newMoon)) / lunarPeriod * 360 + 180;
 
 	let y = ts.getFullYear();
 	let m = ts.getMonth() + 1;

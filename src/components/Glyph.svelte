@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { today, lastDay, theme } from '../stores';
+	import { today, lastDay, theme, lunar } from '../stores';
 	import { get } from 'svelte/store';
 	import GlyphChart from './GlyphChart.svelte';
   import { nest } from 'd3-collection';

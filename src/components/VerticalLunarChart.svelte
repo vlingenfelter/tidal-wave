@@ -38,7 +38,7 @@
   }
 
   // console.log(ranges);
-  console.log($lunar);
+  let radius = 7;
 
   // get all the days in question
   let days = dataByDate.map(d => d.key);
@@ -50,6 +50,9 @@
   let h; // bound to the height of the svg container
 	let width; // will be the adjusted width for the svg
 	let height; 
+  let circle;
+  let projection;
+  let path;
 	let xScale;
 	let yScale;
   let xAxis;
@@ -99,10 +102,41 @@
 			return '#ffcdcd';
 		}
 	}
+
+  const pathColor = (theme) => {
+    if (theme == 'light') {
+      return '#6a65d8';
+    } else {
+      return '#353941';
+    }
+  }
+
+  const circleColor = (theme) => {
+    if (theme == 'light') {
+      return '#fff0f3';
+    } else {
+      return '#ffcdcd';
+    }
+  }
+
+  const outlineColor = (theme) => {
+    if (theme == 'light') {
+      return '#6a65d8';
+    } else {
+      return '#ffcdcd';
+    }
+  }
   
   const formatter = (date) => {
     const arr = date.split('-');
     return `${arr[1]}-${arr[2]}`;
+  }
+
+  const offsetPhase = (phase) => {
+    let p = parseInt(phase);
+    let diameter = 12;
+    let n1 = 0;
+    return 0;
   }
 
 	onMount(() => {
@@ -122,6 +156,19 @@
       dataByDate = dataByDate.filter(d => days.indexOf(d.key) >= 0);
       data = data.filter(d => days.indexOf(d.date) >= 0);
     }
+
+    if (w > 1200) {
+      radius = 9;
+    }
+
+    circle = d3.geoCircle();
+
+    projection = d3.geoOrthographic()
+          .scale(radius)
+          .translate([0, 0]);
+
+    path = d3.geoPath()
+          .projection(projection);
 
     xScale = d3.scaleBand()
       .domain(days)
@@ -145,22 +192,33 @@
       .data(ranges)
       .enter()
       .append('path')
+        .attr('class', 'line')
         .attr("fill", 'none')
         .attr("stroke", lineStroke(get(theme)))
         .attr("stroke-width", 2)
         .attr("d", line);
 
-    svg.selectAll('.circle')
+    let moons = svg.selectAll('.moon')
       .data(get(lunar))
       .enter()
-      .append('circle')
-        .attr('class', d => `circle date-${d.key}`)
-        .attr('cx', d => xScale(d.date))
-        .attr('cy', (d,i) => yScale(ranges[i][1].v) - 10)
-        .attr('r', d => 6)
-        .attr('fill', d => lineStroke(get(theme)))
-        .attr('stroke', 'none')
-        .attr('stroke-width', 0);
+      .append('g')
+        .attr('class', 'moon')
+        .attr('transform', (d, i) => `translate(${[xScale(d.date), yScale(ranges[i][1].v) - (radius + 4)]})`);
+    
+    moons.append('circle')
+      .attr('class', 'circle')
+      .attr('fill', circleColor(get(theme)))
+      .attr('r', radius)
+      .attr('stroke', outlineColor(get(theme)))
+      .attr('stroke-width', 2);
+
+    moons.append('path')
+      .attr('class', 'path')
+      .attr('fill', pathColor(get(theme)))
+      .attr('d', function (d){
+        return path(circle.center([parseFloat(d.phase), 0])());
+      });
+
   });
   
   // listen for theme change
@@ -171,8 +229,12 @@
       .attr('stroke', lineStroke($theme));
     d3.selectAll('.circle')
       .transition()
-      .attr('fill', d => circleFill(get(theme), d.timeDec))
-      .attr('stroke', d => circleStroke(get(theme), d.timeDec));
+      .attr('fill', circleColor(get(theme)))
+      .attr('stroke', outlineColor(get(theme)));
+    d3.selectAll('.path')
+      .transition()
+      .attr('fill', pathColor(get(theme)));
+
 	}
 
 </script>
