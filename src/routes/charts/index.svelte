@@ -25,6 +25,13 @@
 		href: 'charts/ridgeline'
 	}
 
+	$: lunar = {
+		img: `/lunar-${$theme}.png`,
+		title: 'Lunar',
+		blurb: 'Inspired by the lunar cycle',
+		href: 'charts/vertical-lunar'
+	}
+
 	$: vertical = {
 		img: `/vertical-${$theme}.png`,
 		title: 'Vertical',
@@ -53,7 +60,7 @@
 		href: 'charts/star'
 	}
 
-	$: charts = [line, layered, ridgeline, vertical, radial, glyph, star];
+	$: charts = [line, layered, ridgeline, lunar, vertical, radial, glyph, star];
 	
 </script>
 

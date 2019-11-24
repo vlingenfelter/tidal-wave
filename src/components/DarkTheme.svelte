@@ -18,11 +18,12 @@
     if (mounted) { 
       select('body').attr('class', 'bg-light-background'); 
       updateCookie('light');
+      console.log(getCookie('theme'));
     }
   }
 
   const updateCookie = (theme) => {
-    document.cookie = `theme=${theme}`;
+    document.cookie = `theme=${theme};`;
   }
 
   const getCookie = (cookie) => {
@@ -43,12 +44,11 @@
 
   onMount(() => { 
     const cookie = getCookie('theme');
-    console.log(cookie);
-    mounted = true;
-
+  
     if (cookie != '') {
       toggle = (cookie === 'dark');
     }
+    mounted = true;
   });
 
   $: toggleLineStyles = `toggle__line w-10 h-4 bg-${$theme}-h1 rounded-full shadow-inner`;

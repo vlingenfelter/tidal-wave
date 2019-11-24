@@ -3,7 +3,6 @@
 	import { theme, today, lastDay, lunar } from '../stores';
 	import { get } from 'svelte/store';
 	import * as d3 from 'd3';
-	import Tooltip from './Tooltip.svelte';
 
 	export let data; // the dataset to be visualized
 
@@ -59,12 +58,8 @@
   let yName;
 	let line;
 	let svg;
-	let visible = false;
-	let tooltipX;
-	let tooltipY;
-	let text = '';
 
-	let margin = { top: 30, right: 30, bottom: 230, left: 30 };
+	let margin = { top: 30, right: 30, bottom: 40, left: 30 };
 
   // calculate the width for the svg
   const maxWidth = () => {
@@ -86,9 +81,9 @@
 
   // calculate the height for the svg
   const maxHeight = () => {
-    let h = (maxWidth()/1.63);
-    if (h < 700) {
-      return 700;
+    let h = (maxWidth()/2);
+    if (h < 500) {
+      return 500;
     } else {
       return h;
     }
@@ -150,7 +145,7 @@
     height = maxHeight() - margin.top - margin.bottom;
 
     if (maxWidth() < 450) {
-      margin = { top: 30, right: 5, bottom: 30, left: 50 };
+      margin = { top: 30, right: 5, bottom: 40, left: 50 };
       n = parseInt(days.length/2);
       days = days.slice(0, n);
       dataByDate = dataByDate.filter(d => days.indexOf(d.key) >= 0);
@@ -193,10 +188,23 @@
       .enter()
       .append('path')
         .attr('class', 'line')
-        .attr("fill", 'none')
-        .attr("stroke", lineStroke(get(theme)))
-        .attr("stroke-width", 2)
-        .attr("d", line);
+        .attr('fill', 'none')
+        .attr('stroke', lineStroke(get(theme)))
+        .attr('stroke-width', 2)
+        .attr('d', line);
+
+    svg.selectAll('.label')
+      .data(get(lunar))
+      .enter()
+      .append('g')
+        .attr('class', 'label')
+        .attr('transform', d => `translate(${[xScale(d.date), height + (margin.bottom/2)]})`)
+      .append('text')
+        .attr('transform', d => 'rotate(-45)')
+        .style('text-anchor', 'middle')
+        .style('font-family', 'monospace')
+        .attr('fill', lineStroke(get(theme)))
+        .text(d => formatter(d.date)); 
 
     let moons = svg.selectAll('.moon')
       .data(get(lunar))
@@ -224,17 +232,9 @@
   // listen for theme change
   $: {
     // update the chart components
-  	d3.selectAll('.line')
-      .transition()
-      .attr('stroke', lineStroke($theme));
-    d3.selectAll('.circle')
-      .transition()
-      .attr('fill', circleColor(get(theme)))
-      .attr('stroke', outlineColor(get(theme)));
-    d3.selectAll('.path')
-      .transition()
-      .attr('fill', pathColor(get(theme)));
-
+  	d3.selectAll('.line').transition().attr('stroke', lineStroke($theme));
+    d3.selectAll('.circle').transition().attr('fill', circleColor(get(theme))).attr('stroke', outlineColor(get(theme)));
+    d3.selectAll('.path').transition().attr('fill', pathColor(get(theme)));
 	}
 
 </script>
@@ -242,5 +242,4 @@
 
 <div bind:clientWidth={w} bind:clientHeight={h} class='flex justify-center'>
 	<svg bind:this={el}></svg>
-  <Tooltip {tooltipX} {tooltipY} {visible} {text} />
 </div>
