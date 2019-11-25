@@ -14,9 +14,9 @@
 	const anchor = `flex flex-row items-center py-6`;
 	const caption = 'flex flex-col pl-8';
 
-	$: pStyles = `font-mono text-${$theme}-p pt-4`;
+	$: pStyles = `font-mono text-${$theme}-p pt-4 lg:text-lg xl:text-lg`;
 	$: h1Styles = `font-mono text-${$theme}-h1 text-center text-2xl pb-8`;
-	$: h2Styles = `font-mono text-${$theme}-h1 text-xl ${hover}`;
+	$: h2Styles = `font-mono text-${$theme}-h1 text-xl xl:text-2xl ${hover}`;
 
 	const onMouseover = () => { 
 		hover = 'underline';  

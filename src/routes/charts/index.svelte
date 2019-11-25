@@ -2,7 +2,7 @@
 	import { theme } from '../../stores';
 	import ChartLink from '../../components/ChartLink.svelte';
 
-	$: h1Styles = `font-mono text-${$theme}-h1 text-center text-2xl pb-8`;
+	$: h1Styles = `font-mono text-${$theme}-h1 text-center text-2xl lg:text-3xl pb-8`;
 
 	$: line = {
 		img: `/line-${$theme}.png`,
@@ -11,45 +11,45 @@
 		href: 'charts/line'
 	}
 
+	$: radial = {
+		img: `/radial-${$theme}.png`,
+		title: 'Radial Line',
+		blurb: 'The line chart but circular',
+		href: 'charts/radial'
+	}
+
 	$: layered = {
 		img: `/layered-${$theme}.png`,
 		title: 'Layered',
-		blurb: 'Inspired by the classic timeseries chart',
+		blurb: 'Inspired by the line chart',
 		href: 'charts/layered-line'
 	}
 
 	$: ridgeline = {
 		img: `/ridgeline-${$theme}.png`,
 		title: 'Ridgeline',
-		blurb: 'Inspired by the classic line chart',
+		blurb: 'Inspired by the layered chart',
 		href: 'charts/ridgeline'
 	}
 
 	$: lunar = {
 		img: `/lunar-${$theme}.png`,
-		title: 'Lunar',
-		blurb: 'Inspired by the lunar cycle',
+		title: 'Vertical Lunar',
+		blurb: 'Inspired by the line chart',
 		href: 'charts/vertical-lunar'
 	}
 
 	$: vertical = {
 		img: `/vertical-${$theme}.png`,
 		title: 'Vertical',
-		blurb: 'Inspired by the classic line chart',
+		blurb: 'Inspired by the lunar chart and the line chart',
 		href: 'charts/vertical'
-	}
-
-	$: radial = {
-		img: `/radial-${$theme}.png`,
-		title: 'Radial',
-		blurb: 'Inspired by the classic line chart',
-		href: 'charts/radial'
 	}
 
 	$: glyph = {
 		img: `/glyph-${$theme}.png`,
-		title: 'Glyph',
-		blurb: 'Inspired by the radial chart',
+		title: 'Lunar',
+		blurb: 'The lunar predicitons for the month',
 		href: 'charts/glyph'
 	}
 
@@ -60,7 +60,7 @@
 		href: 'charts/star'
 	}
 
-	$: charts = [line, layered, ridgeline, lunar, vertical, radial, glyph, star];
+	$: charts = [line, radial, layered, ridgeline, lunar, vertical];
 	
 </script>
 

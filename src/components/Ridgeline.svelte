@@ -4,10 +4,13 @@
 	import { get } from 'svelte/store';
 	import RidgelineChart from './RidgelineChart.svelte';
   import RidgelineHowTo from './RidgelineHowTo.svelte';
+  import Fig from './Fig.svelte';
 
 	let url = '';
   let data = [];
   let loaded = false;
+
+  let text = 'This chart is based on the Line Chart. It shows tidal high/low projections for Moss Landing for the next 30 days, where each line is a day\'s data and time of day (midnight to 11:59 pm) is represented on the x-axis. Hover to see the date associated with each line. Today is at the top.';
 
   onMount(() => {
   	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
@@ -37,6 +40,7 @@
 
 {#if loaded}
 	<RidgelineChart data={data} />
+  <Fig {text} />
   <RidgelineHowTo />
 {:else}
 	<h2 class={pStyles}>Loading...</h2>

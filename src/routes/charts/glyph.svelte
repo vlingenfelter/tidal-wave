@@ -8,8 +8,8 @@
 </script>
 
 <svelte:head>
-	<title>Glyph | Tidal Waves</title>
+	<title>Lunar Chart | Tidal Waves</title>
 </svelte:head>
 
-<h1 class={h1Styles}>The Glyphs</h1>
+<h1 class={h1Styles}>The Lunar Chart</h1>
 <Glyph />

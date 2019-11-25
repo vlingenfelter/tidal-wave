@@ -44,6 +44,36 @@
           .key(function(d) { return d.date; })
           .entries(temp);
 
+        // let prev = [];
+        // let future = [];
+
+        // for (let i=0; i<data.length; i++) {
+        //   let yesterday = data[i-1];
+        //   if (yesterday !== undefined) {
+        //     let y = yesterday.values.slice(-1)[0];
+        //     prev.push({ timeDec: y.timeDec - 24, v: y.v })
+        //   } else {
+        //     prev.push(undefined);
+        //   }
+
+        //   let tomorrow = data[i+1];
+        //   if (tomorrow !== undefined) {
+        //     let t = tomorrow.values.slice(0,1)[0];
+        //     future.push({ timeDec: t.timeDec + 24, v: t.v })
+        //   } else {
+        //     future.push(undefined);
+        //   }
+        // }
+
+        // for (let i=0; i<data.length; i++){
+        //   if (prev[i] !== undefined) {
+        //     data[i].values.unshift(prev[i]);
+        //   }
+        //   if (future[i] !== undefined) {
+        //     data[i].values.push(future[i]);
+        //   }
+        // }
+
   			loaded = true;
   		});
   });

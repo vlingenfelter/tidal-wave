@@ -3,10 +3,13 @@
 	import { today, lastDay , theme} from '../stores';
 	import { get } from 'svelte/store';
 	import VerticalLunarChart from './VerticalLunarChart.svelte';
+  import Fig from './Fig.svelte';
 
 	let url = '';
   let data = [];
   let loaded = false;
+
+  let text = 'This chart shows tidal high/low projections for Moss Landing for the next 30 days, as well as the projected lunar phase. Each line is is a day, where the height of the line represents the extent of the tide that day, and the circle represents the lunar phase. Today is on the left.';
 
   onMount(() => {
   	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
@@ -37,6 +40,7 @@
 
 {#if loaded}
 	<VerticalLunarChart data={data} />
+  <Fig {text} />
 {:else}
 	<h2 class={pStyles}>Loading...</h2>
 {/if}

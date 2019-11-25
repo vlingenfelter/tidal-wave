@@ -5,6 +5,7 @@
 	$: backgroundStyles = `bg-${$theme}-background`;
 	$: h1Styles = `font-mono text-${$theme}-h1 text-2xl text-center`;
 
+
 </script>
 
 <svelte:head>

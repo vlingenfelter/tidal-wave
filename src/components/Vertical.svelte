@@ -4,10 +4,13 @@
 	import { get } from 'svelte/store';
 	import VerticalChart from './VerticalChart.svelte';
   import VerticalHowTo from './VerticalHowTo.svelte';
+  import Fig from './Fig.svelte'
 
 	let url = '';
   let data = [];
   let loaded = false;
+
+  const text = 'This chart shows tidal high/low projections for Moss Landing for the next 30 days. Each line is is a day, where the height of the line represents the extent of the local sea-level that day. Today is on the left. The circles represent tidal predictions. The size and color of the circles represent the time of day that the tidal high or low is expected to occur, and the height of the circle represents the local sea-level at that time.'
 
   onMount(() => {
   	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
@@ -56,6 +59,7 @@
 
 {#if loaded}
 	<VerticalChart data={data} />
+  <Fig {text} />
   <VerticalHowTo />
 {:else}
 	<h2 class={pStyles}>Loading...</h2>

@@ -233,8 +233,9 @@
   $: {
     // update the chart components
   	d3.selectAll('.line').transition().attr('stroke', lineStroke($theme));
-    d3.selectAll('.circle').transition().attr('fill', circleColor(get(theme))).attr('stroke', outlineColor(get(theme)));
+    d3.selectAll('.circle').transition().attr('fill', circleColor($theme)).attr('stroke', outlineColor($theme));
     d3.selectAll('.path').transition().attr('fill', pathColor(get(theme)));
+    d3.selectAll('.label').selectAll('text').transition().attr('fill', lineStroke($theme))
 	}
 
 </script>

@@ -203,6 +203,15 @@
           .x(function(d) { return xScale(d.date); })
           .y(function(d) { return yScale(d.v); });
 
+    svg.append('rect')
+      .attr('class', 'sea-level')
+      .attr('x', xScale(0))
+      .attr('y', yScale(0))
+      .attr('width', width)
+      .attr('height', 1.5)
+      .attr('fill', lineStroke(get(theme)))
+      .attr('stroke', 'none');
+
     svg.selectAll('area')
       .data(dataByDate)
       .enter()

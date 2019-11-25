@@ -13,6 +13,7 @@
   const minDate = d3.min(data.map(d => d.date));
   const maxDate = d3.max(data.map(d => d.date));
 
+
   let hours = [1,2,3,4,5,6,7,8,9,10,11,12];
 
   let innerRadius = 60;

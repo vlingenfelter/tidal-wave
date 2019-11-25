@@ -10,9 +10,9 @@
   let w;
 
 	$: navStyles = `font-mono flex items-center justify-between flex-wrap bg-${$theme}-nav py-6 px-8 lg:px-16`;
-	$: titleStyles = `font-extrabold text-xl lg:text-3xl text-${$theme}-h1 tracking-wider hover:underline`;
-	$: anchorStyles = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p lg:border-b-2 lg:border-transparent lg:hover:border-${$theme}-h1 hover:underline lg:hover:no-underline`;
-  $: selected = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p lg:border-b-2 lg:border-dashed lg:border-${$theme}-h1 lg:hover:border-solid underline lg:no-underline`;
+	$: titleStyles = `font-extrabold text-xl lg:text-3xl xl:text-4xl text-${$theme}-h1 tracking-wider hover:underline`;
+	$: anchorStyles = `block mt-4 lg:inline-block lg:mt-0 text-${$theme}-p lg:border-b-2 lg:border-transparent lg:hover:border-${$theme}-h1 hover:underline lg:text-xl lg:hover:no-underline`;
+  $: selected = `block mt-4 lg:inline-block lg:text-xl lg:mt-0 text-${$theme}-p lg:border-b-2 lg:border-dashed lg:border-${$theme}-h1 lg:hover:border-solid underline lg:no-underline`;
   $: buttonStyles = `flex items-center px-3 py-2 border rounded text-${$theme}-h1 border-${$theme}-h1 hover:text-${$theme}-p hover:border-${$theme}-p`;
   $: darkThemeStyles = `lg:mt-0 mt-4`;
   $: dropdownStyles = `w-full block flex-grow lg:flex lg:items-center lg:w-auto`;

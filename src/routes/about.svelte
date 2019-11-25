@@ -3,9 +3,14 @@
   import Map from '../components/Map.svelte';
   import Link from '../components/Link.svelte';
 
-	$: pStyles = `font-mono text-${$theme}-p pb-4 leading-relaxed`;
-	$: h1Styles = `font-mono text-${$theme}-h1 text-3xl pb-4`;
+	$: pStyles = `font-mono text-${$theme}-p py-4 leading-relaxed lg:text-lg xl:text-lg`;
+	$: h1Styles = `font-mono text-${$theme}-h1 text-center text-3xl pb-4`;
   $: h2Styles = `font-mono text-${$theme}-h1 text-2xl py-8`;
+
+  const adrienLink = {
+    href: 'https://www.adriensegal.com/tidal-datum',
+    text: "Adrien Segal's Tidal Datum"
+  }
 
   const noaaLink = {
     href: 'https://tidesandcurrents.noaa.gov/tide_predictions',
@@ -18,8 +23,8 @@
   }
 
   const personalLink = {
-    href: 'https://violetlingenfelter.com',
-    text: 'my personal site'
+    href: 'https://violetlingenfelter.com/projects/',
+    text: 'my other projects'
   }
 
 </script>
@@ -31,6 +36,8 @@
 <div class='flex justify-center'>
   <div class='max-w-4xl p-1 lg:p-6'>
     <h1 class={h1Styles}>About the project</h1>
+
+    <p class={pStyles}>Tidal wave is a series of data visualizations that seek to explore how we see tides. This project was inspired by <Link props={adrienLink}/>.</p>
 
     <h2 class={h2Styles}>Data Source</h2>
 
@@ -47,7 +54,7 @@
     <h2 class={h2Styles}>About me</h2>
 
     <p class={pStyles}>
-    	I love data visualization and I love the ocean. You can check out <Link props={personalLink} /> to see more of my projects. 
+    	I love data visualization and I love the ocean. You can also check out <Link props={personalLink} />. 
     </p>
   </div>
 </div>

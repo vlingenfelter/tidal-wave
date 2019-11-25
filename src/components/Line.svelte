@@ -10,7 +10,7 @@
   let data = [];
   let loaded = false;
 
-  let text = 'This shows tidal high/low projections for Moss Landing for the next 30 days, where height is represented on the y-axis and time is represented on the x-axis.'
+  let text = 'This shows tidal high/low projections for Moss Landing for the next 30 days, where sea-level (in feet) is represented on the y-axis and time is represented on the x-axis.'
 
   onMount(() => {
   	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;

@@ -19,6 +19,8 @@
   let days = dataByDate.map(d => d.key);
   let n = days.length;
 
+  let hours = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+
 	let el;
 	let w;
   let h;
@@ -63,6 +65,11 @@
     }
   }
 
+  const formatter = (date) => {
+    const arr = date.split('-');
+    return `${arr[1]}-${arr[2]}`;
+  }
+
 	onMount(() => {
     svg = d3.select(el)
     	.attr('height', maxHeight())
@@ -98,6 +105,19 @@
     //   .attr('transform', `translate(0, ${height})`)
     //   .call(d3.axisBottom(xScale));
 
+    // svg.selectAll('.hour')
+    //   .data(hours)
+    //   .enter()
+    //   .append('rect')
+    //     .attr('class', 'hour')
+    //     .attr('x', d => xScale(d))
+    //     .attr('y', 0 - margin.top)
+    //     .attr('width', 1.5)
+    //     .attr('height', height + margin.top)
+    //     .attr('fill', lineStroke(get(theme)))
+    //     .attr('stroke', 'none')
+    //     .style('opacity', 0.3);
+
     svg.selectAll('area')
       .data(dataByDate)
       .enter()
@@ -122,7 +142,7 @@
         .attr("stroke-width", 15)
         .attr("d", line)
         .on('mousemove', d => {
-          let thisDate = d[0].date;
+          let thisDate = formatter(d[0].date);
           tooltipX = d3.event.pageX - margin.right;
           tooltipY = d3.event.pageY - ((height - margin.top - margin.bottom)/2);
 
@@ -139,6 +159,7 @@
 
   $: {
   	d3.selectAll('.line').transition().attr('stroke', lineStroke($theme));
+    d3.selectAll('.hour').transition().attr('fill', lineStroke($theme));
 	}
 
 </script>
