@@ -48,6 +48,14 @@
     }
   }
 
+  const legendColor = (theme) => {
+    if (theme == 'light') {
+      return '#000';
+    } else {
+      return '#fff';
+    }
+  }
+
   const maxWidth = () => {
     if (w > 700) {
       return 700
@@ -96,7 +104,7 @@
         //     .attr("stroke", "#000"))
         .call(g => g.append('text')
             .attr('class', 'x-axis')
-            .attr('fill', lineStroke(get(theme)))
+            .attr('fill', legendColor(get(theme)))
             .attr('transform', (d,i) => (xScale(d) + xScale.bandwidth() / 2 + Math.PI / 2) % (2 * Math.PI) < Math.PI
                 ? 'rotate(90)translate(0,16)'
                 : 'rotate(-90)translate(0,-9)')
@@ -131,7 +139,7 @@
             .selectAll(function() { return [this, this.previousSibling]; })
             .clone(true)
               .attr('class', 'y-axis-text')
-              .attr("fill", lineStroke(get(theme)))
+              .attr("fill", legendColor(get(theme)))
               .attr("stroke", "none")));
 
     // line = d3.line()
@@ -172,9 +180,9 @@
 
 
   $: {
-    d3.selectAll('.y-axis-label').attr('stroke', background($theme)).attr('fill', lineStroke($theme));
+    d3.selectAll('.y-axis-label').attr('stroke', background($theme)).attr('fill', legendColor($theme));
     d3.selectAll('.y-axis').transition().attr('stroke', lineStroke($theme));
-    d3.selectAll('.y-axis-text').transition().attr('fill', lineStroke($theme));
+    d3.selectAll('.y-axis-text').transition().attr('fill', legendColor($theme));
     d3.selectAll('.x-axis').transition().attr('fill', lineStroke($theme));
     d3.selectAll('.line').transition().attr('stroke', lineStroke($theme));
   }

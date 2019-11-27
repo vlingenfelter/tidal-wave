@@ -114,6 +114,14 @@
     }
   }
 
+  const legendColor = (theme) => {
+    if (theme == 'light') {
+      return '#000';
+    } else {
+      return '#fff';
+    }
+  }
+
   const outlineColor = (theme) => {
     if (theme == 'light') {
       return '#6a65d8';
@@ -203,7 +211,7 @@
         .attr('transform', d => 'rotate(-45)')
         .style('text-anchor', 'middle')
         .style('font-family', 'monospace')
-        .attr('fill', lineStroke(get(theme)))
+        .attr('fill', legendColor(get(theme)))
         .text(d => formatter(d.date)); 
 
     let moons = svg.selectAll('.moon')
@@ -235,7 +243,7 @@
   	d3.selectAll('.line').transition().attr('stroke', lineStroke($theme));
     d3.selectAll('.circle').transition().attr('fill', circleColor($theme)).attr('stroke', outlineColor($theme));
     d3.selectAll('.path').transition().attr('fill', pathColor(get(theme)));
-    d3.selectAll('.label').selectAll('text').transition().attr('fill', lineStroke($theme))
+    d3.selectAll('.label').selectAll('text').transition().attr('fill', legendColor($theme))
 	}
 
 </script>

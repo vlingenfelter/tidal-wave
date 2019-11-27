@@ -73,6 +73,14 @@
 		}
 	}
 
+  const legendColor = (theme) => {
+    if (theme == 'light') {
+      return '#000';
+    } else {
+      return '#fff';
+    }
+  }
+
   const maxWidth = () => {
     if (w > 1000) {
       return 1000
@@ -138,7 +146,7 @@
         .remove())
       .call(g => g.selectAll('.tick')
         .selectAll('text')
-        .attr('fill', lineStroke(get(theme)))
+        .attr('fill', legendColor(get(theme)))
         .style('font-size', '1.25em')
         .style('text-anchor', 'right')
         .style('font-family', 'monospace'));
@@ -150,7 +158,7 @@
       .attr('x', 0 - (height / 2))
       .style('text-anchor', 'middle')
       .style('font-family', 'monospace')
-      .attr('fill', lineStroke(get(theme)))
+      .attr('fill', legendColor(get(theme)))
       .text('Distance from sea level'); 
 
     svg.append("clipPath")
@@ -178,8 +186,8 @@
   $: {
   	d3.selectAll('.line').transition().attr('stroke', lineStroke($theme));
     d3.selectAll('.sea-level').transition().attr('fill', lineStroke($theme));
-    d3.selectAll('.tick').selectAll('text').transition().attr('fill', lineStroke($theme));
-    d3.selectAll('.axis-label').transition().attr('fill', lineStroke($theme));
+    d3.selectAll('.tick').selectAll('text').transition().attr('fill', legendColor($theme));
+    d3.selectAll('.axis-label').transition().attr('fill', legendColor($theme));
 	}
 
 </script>

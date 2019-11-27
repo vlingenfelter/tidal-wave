@@ -97,6 +97,14 @@
 		}
 	}
 
+  const legendColor = (theme) => {
+    if (theme == 'light') {
+      return '#000';
+    } else {
+      return '#fff';
+    }
+  }
+
   // update the circles based on theme and data circle represents
   const circleFill = (theme, timeDec) => {
     let day = (timeDec >= 6) && (timeDec <= 18);
@@ -266,7 +274,7 @@
       .attr('y', 0-(margin.top/ 2))
       .attr('text-anchor', 'middle')
       .style('font-family', 'monospace')
-      .attr('fill', lineStroke(get(theme)))
+      .attr('fill', legendColor(get(theme)))
       .text('Legend');
 
     legend.append('g')
@@ -279,7 +287,7 @@
         .remove())
       .call(g => g.selectAll('.tick')
         .selectAll('text')
-        .attr('fill', lineStroke(get(theme)))
+        .attr('fill', legendColor(get(theme)))
         .style('font-family', 'monospace'));
 
      legend.append('g')
@@ -306,7 +314,7 @@
         .remove())
       .call(g => g.selectAll('.tick')
         .selectAll('text')
-        .attr('fill', lineStroke(get(theme)))
+        .attr('fill', legendColor(get(theme)))
         .style('font-family', 'monospace'));
 
      legend.append('g')
@@ -327,21 +335,17 @@
   // listen for theme change
   $: {
     // update the chart components
-  	d3.selectAll('.line')
-      .transition()
-      .attr('stroke', lineStroke($theme));
-    d3.selectAll('.circle')
-      .transition()
-      .attr('fill', d => circleFill(get(theme), d.timeDec))
+  	d3.selectAll('.line').transition().attr('stroke', lineStroke($theme));
+    d3.selectAll('.sea-level').transition().attr('fill', lineStroke($theme));
+    d3.selectAll('.circle').transition().attr('fill', d => circleFill(get(theme), d.timeDec))
       .attr('stroke', d => circleStroke(get(theme), d.timeDec));
-
     // update the legend components
     d3.selectAll('.circle-legend').transition()
       .attr('fill', d => circleFill(get(theme), d))
       .attr('stroke', d => circleStroke(get(theme), d));
     d3.selectAll('.legend-rect').transition().attr('stroke', lineStroke($theme));
-    d3.selectAll('.legend.title').transition().attr('fill', lineStroke($theme));
-    d3.selectAll('.tick').selectAll('text').transition().attr('fill',lineStroke($theme));
+    d3.selectAll('.legend.title').transition().attr('fill', legendColor($theme));
+    d3.selectAll('.tick').selectAll('text').transition().attr('fill', legendColor($theme));
 	}
 
 </script>
