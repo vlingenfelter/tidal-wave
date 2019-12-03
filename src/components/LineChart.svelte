@@ -59,6 +59,11 @@
     }
   }
 
+  const formatter = (date) => {
+    const arr = date.split('-');
+    return `${arr[1]}-${arr[2]}`;
+  }
+
 	onMount(() => {
     svg = d3.select(el)
     	.attr('height', maxHeight())
@@ -144,7 +149,7 @@
       	tooltipX = d3.event.pageX - margin.right;
         tooltipY = d3.event.pageY - ((height - margin.top - margin.bottom)/2);
       	visible = true;
-        text = `${d.v} ft`;
+        text = `${d.v} ft at ${d.time} on ${formatter(d.date)}`;
       })
       .on('mouseout', (d) => { visible = false; });
   });

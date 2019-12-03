@@ -15,11 +15,18 @@
     text: 'Svelte'
   }
 
+  const sourceLink = {
+    href: 'https://github.com/vlingenfelter/tidal-wave',
+    text: 'Source'
+  }
+
 </script>
 
 <footer class={footerStyles}>
   <p class={pStyles}>Made with ❤️ in Arlington, VA.
     <br >
     Powered by <Link props={svelteLink} /> and <Link props={d3Link} />
+    <br >
+    <Link props={sourceLink} />
   </p>
 </footer>
