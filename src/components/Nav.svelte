@@ -54,10 +54,10 @@
   <div class={dropdownStyles} transition:slide>
     <div class="text-sm lg:flex-grow">
       <span class='px-2'>
-      	<a class={segment === "about" ? selected : anchorStyles} rel='prefetch' href='about' on:click={linkSelected}>about</a>
+        <a class={segment === "charts" ? selected : anchorStyles} rel='prefetch' href='charts' on:click={linkSelected}>charts</a>
       </span>
       <span class='px-2'>
-        <a class={segment === "charts" ? selected : anchorStyles} rel='prefetch' href='charts' on:click={linkSelected}>charts</a>
+        <a class={segment === "glossary" ? selected : anchorStyles} rel='prefetch' href='glossary' on:click={linkSelected}>glossary</a>
       </span>
     </div>
     <div class={darkThemeStyles}>
