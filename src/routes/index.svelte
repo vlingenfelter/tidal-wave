@@ -87,7 +87,7 @@
 	  <div class={divStyles}>
 	    <h2 class={h2Styles}>About me</h2>
 	    <p class={pStyles}>
-	    	I love data visualization and I love the ocean. You can also check out <Link props={personalLink} />. 
+	    	I'm Violet. I love data visualization and the ocean. You can also check out <Link props={personalLink} />. 
 	    </p>
   	</div>
 	</div>

@@ -14,7 +14,7 @@
     .replace(/^-+/, '') 
     .replace(/-+$/, '');
 
-  $: termStyles = `font-mono text-${$theme}-h1 leading-relaxed text-lg lg:text-xl pb-2`
+  $: termStyles = `font-mono text-${$theme}-h2 leading-relaxed text-lg lg:text-xl pb-2`
   $: pStyles = `font-mono text-${$theme}-p leading-relaxed lg:text-lg xl:text-lg`;
 </script>
 
