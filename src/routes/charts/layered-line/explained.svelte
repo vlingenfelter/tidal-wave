@@ -1,5 +1,9 @@
 <script>
 	import { theme } from '../../../stores';
+	import DataTable from '../../../components/DataTable.svelte';
+  import Fig from '../../../components/Fig.svelte';
+  import Link from '../../../components/Link.svelte';
+  import GlossaryLink from '../../../components/GlossaryLink.svelte';
 
 	$: pStyles = `font-mono text-${$theme}-p py-4 leading-relaxed lg:text-lg xl:text-lg`;
   $: h1Styles = `font-mono text-${$theme}-h1 text-center text-3xl pb-4`;

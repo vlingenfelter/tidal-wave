@@ -3,14 +3,16 @@
 	import { today, lastDay , theme} from '../stores';
 	import { get } from 'svelte/store';
 	import LineChart from './LineChart.svelte';
-  import LineHowTo from './LineHowTo.svelte';
-  import Fig from './Fig.svelte';
+  import Link from './Link.svelte';
 
 	let url = '';
   let data = [];
   let loaded = false;
 
-  let text = 'This shows tidal high/low projections for Moss Landing for the next 30 days, where sea-level (in feet) is represented on the y-axis and time is represented on the x-axis.'
+  const props = {
+    href: '/charts/line/explained',
+    text: 'See how this chart was made',
+  }
 
   onMount(() => {
   	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
@@ -35,15 +37,14 @@
   		});
   });
 
-  $: pStyles = `font-mono text-${$theme}-p pb-4`;
+  $: pStyles = `font-mono text-${$theme}-p py-4 text-center`;
 
 </script>
 
 {#if loaded}
 <div class='flex flex-col justify-center'>
 	<LineChart data={data} />
-  <Fig {text} />
-  <LineHowTo />
+  <p class={pStyles}><Link props={props} /></p>
 </div>
 {:else}
 	<h2 class={pStyles}>Loading...</h2>

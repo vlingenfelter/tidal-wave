@@ -3,7 +3,6 @@
 	import { today, lastDay, theme } from '../stores';
 	import { get } from 'svelte/store';
 	import RidgelineChart from './RidgelineChart.svelte';
-  import RidgelineHowTo from './RidgelineHowTo.svelte';
   import Fig from './Fig.svelte';
 
 	let url = '';
@@ -41,7 +40,6 @@
 {#if loaded}
 	<RidgelineChart data={data} />
   <Fig {text} />
-  <RidgelineHowTo />
 {:else}
 	<h2 class={pStyles}>Loading...</h2>
 {/if}

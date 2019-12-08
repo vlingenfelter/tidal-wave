@@ -3,7 +3,6 @@
 	import { today, lastDay, theme } from '../stores';
 	import { get } from 'svelte/store';
 	import VerticalChart from './VerticalChart.svelte';
-  import VerticalHowTo from './VerticalHowTo.svelte';
   import Fig from './Fig.svelte'
 
 	let url = '';
@@ -60,7 +59,6 @@
 {#if loaded}
 	<VerticalChart data={data} />
   <Fig {text} />
-  <VerticalHowTo />
 {:else}
 	<h2 class={pStyles}>Loading...</h2>
 {/if}

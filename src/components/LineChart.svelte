@@ -11,6 +11,8 @@
   let min = d3.min(data.map(d => d.v));
   let n = data.length;
 
+  console.log(data);
+
 	let el;
 	let w;
 	let width;
@@ -79,8 +81,8 @@
     width = maxWidth() - margin.left - margin.right;
     height = maxHeight() - margin.top - margin.bottom;
 
-    xScale = d3.scaleLinear()
-    	.domain([0, n]) 
+    xScale = d3.scaleTime()
+    	.domain([new Date(data[0].t), new Date(data[n-1].t)]) 
     	.range([0, width - margin.right]); 
 
     yScale = d3.scaleLinear()
@@ -88,17 +90,32 @@
     	.range([height, 0]); // output 
 
     line = d3.line()
-    	.x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    	.x(function(d, i) { return xScale(new Date(d.t)); }) // set the x values for the line generator
     	.y(function(d) { return yScale(d.v); }) // set the y values for the line generator 
     	.curve(d3.curveMonotoneX)
 
     // svg.append('g')
     // 	.attr('transform', `translate(0,${height})`)
-    // 	.call(d3.axisBottom(xScale));
+    // 	.call(d3.axisBottom(xScale)
+    //     .tickFormat(d3.timeFormat('%m/%d'))
+    //     .ticks(d3.timeDay.every(1)))
+    //   .call(g => g.select('.domain')
+    //     .attr('stroke', legendColor(get(theme))))
+    //   .call(g => g.selectAll('.tick')
+    //     .selectAll('line')
+    //     .attr('stroke', legendColor(get(theme))))
+    //   .selectAll('text') 
+    //     .style('text-anchor', 'end')
+    //     .attr('fill', legendColor(get(theme)))
+    //     .style('font-size', '1.25em')
+    //     .attr("dx", "-.8em")
+    //     .attr("dy", ".15em")
+    //     .style('font-family', 'monospace')
+    //     .attr("transform", "rotate(-65)");
 
     svg.append('rect')
       .attr('class', 'sea-level')
-      .attr('x', xScale(0))
+      .attr('x', xScale(new Date(data[0].t)))
       .attr('y', yScale(0))
       .attr('width', width - margin.right)
       .attr('height', 1.5)
@@ -127,7 +144,7 @@
       .style('text-anchor', 'middle')
       .style('font-family', 'monospace')
       .attr('fill', legendColor(get(theme)))
-      .text('Distance from sea level'); 
+      .text('Predicted water level'); 
 
     svg.append('path')
     	.datum(data) // 10. Binds data to the line 
@@ -141,8 +158,10 @@
     	.data(data)
   		.enter().append('circle') // Uses the enter().append() method
     	.attr('class', 'dot') // Assign a class for styling
-    	.attr('cx', function(d, i) { return xScale(i) })
+    	.attr('cx', function(d, i) { return xScale(new Date(d.t)) })
     	.attr('cy', function(d) { return yScale(d.v) })
+      // .attr('fill', lineStroke(get(theme)))
+      // .attr('stroke', lineStroke(get(theme)))
     	.attr('r', 5)
     	.style('opacity', 0)
       .on('mouseover', (d) => {
