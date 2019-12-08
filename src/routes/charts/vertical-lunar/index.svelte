@@ -1,6 +1,6 @@
 <script>
-	import VerticalLunar from '../../components/VerticalLunar.svelte';
-	import { theme, today } from '../../stores';
+	import VerticalLunar from '../../../components/VerticalLunar.svelte';
+	import { theme, today } from '../../../stores';
 
 	$: backgroundStyles = `bg-${$theme}-background`;
 	$: h1Styles = `font-mono text-${$theme}-h1 text-2xl text-center`;

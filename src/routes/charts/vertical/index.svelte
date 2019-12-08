@@ -1,6 +1,6 @@
 <script>
-	import Vertical from '../../components/Vertical.svelte';
-	import { theme, today } from '../../stores';
+	import Vertical from '../../../components/Vertical.svelte';
+	import { theme, today } from '../../../stores';
 
 	$: backgroundStyles = `bg-${$theme}-background`;
 	$: h1Styles = `font-mono text-${$theme}-h1 text-2xl text-center`;

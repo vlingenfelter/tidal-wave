@@ -60,7 +60,7 @@
 			<h1 class={h1Styles}>Welcome to Tidal Wave</h1>
 		</div>
 		<div class={divStyles}>
-			<p class={pStyles}>Tidal wave is a visual exploration of tidal projections. By focusing on more artistic visualizations, we can begin to see some of the hidden daily and monthly patterns that exist in the data. This project was inspired by <Link props={adrienLink}/>.</p>
+			<p class={pStyles}>Tidal wave is a visual exploration of NOAA's high/low tidal projections. By focusing on more artistic interpretations of the <GlossaryLink term={'marigram'} />, we can begin to see some of the daily and monthly patterns that exist in the tides. This project was inspired by <Link props={adrienLink}/>.</p>
 		</div>
 
 		<img alt='Line' src={img1}>
