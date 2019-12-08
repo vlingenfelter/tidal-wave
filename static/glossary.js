@@ -22,7 +22,7 @@ export let terms = [
   {
     term: 'Type of Tide',
     letter: 'T',
-    def: 'A classification based on characteristic forms of a tide curve. Qualitatively, when the two high waters and two low waters of each tidal day are approximately equal in height, the tide is said to be semidiurnal; when there is a relatively large diurnal inequality in the high or low waters or both, it is said to be mixed; and when there is only one high water and one low water in each tidal day, it is said to be diurnal. Quantitatively (after Dietrich), where the amplitude ratio of K1 + O1 to M2 + S2 is less than 0.25, the tide is classified as semidiurnal; where the ratio is from 0.25 to 1.5, the tide is mixed, mainly semidiurnal; where the ratio is from 1.5 to 3.0, the tide is mixed, mainly diurnal; and where greater than 3.0, diurnal.',
+    def: 'A classification based on characteristic forms of a tide curve. Qualitatively, when the two high waters and two low waters of each tidal day are approximately equal in height, the tide is said to be semidiurnal; when there is a relatively large diurnal inequality in the high or low waters or both, it is said to be mixed; and when there is only one high water and one low water in each tidal day, it is said to be diurnal.',
   },
   {
     term: 'Tide Curve',
@@ -97,7 +97,7 @@ export let terms = [
   {
     term: 'Diurnal',
     letter: 'D',
-    def: 'The lowest point in a propagating wave',
+    def: 'Having a period or cycle of approximately one tidal day. Thus, the tide is said to be diurnal when only one high water and one low water occur during a tidal day.',
   },
   {
     term: 'Current',

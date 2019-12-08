@@ -2,6 +2,7 @@
   import Link from './Link.svelte';
 
   export let term = 'tide';
+  export let text = term;
 
   let slug = term.toString().toLowerCase()
     .replace(/\s+/g, '-') 
@@ -12,7 +13,7 @@
     .replace(/-+$/, '');
 
   let props = {
-    text: term.toString(),
+    text: text.toString(),
     href: `glossary#${slug}`,
   }
   
