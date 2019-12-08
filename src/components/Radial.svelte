@@ -3,7 +3,6 @@
 	import { today, lastDay, theme } from '../stores';
 	import { get } from 'svelte/store';
 	import RadialChart from './RadialChart.svelte';
-  import Fig from './Fig.svelte';
 
 	let url = '';
   let data = [];
@@ -40,7 +39,6 @@
 
 {#if loaded}
 	<RadialChart data={data} />
-  <Fig {text} />
 {:else}
 	<h2 class={pStyles}>Loading...</h2>
 {/if}

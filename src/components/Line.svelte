@@ -44,7 +44,6 @@
 {#if loaded}
 <div class='flex flex-col justify-center'>
 	<LineChart data={data} />
-  <p class={pStyles}><Link props={props} /></p>
 </div>
 {:else}
 	<h2 class={pStyles}>Loading...</h2>
