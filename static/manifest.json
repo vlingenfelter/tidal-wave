@@ -1,8 +1,8 @@
 {
 	"background_color": "#ffffff",
 	"theme_color": "#333333",
-	"name": "TODO",
-	"short_name": "TODO",
+	"name": "Tidal Wave -- A Data Art project",
+	"short_name": "Tidal Wave",
 	"display": "minimal-ui",
 	"start_url": "/"
 }

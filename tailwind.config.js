@@ -8,6 +8,7 @@ module.exports = {
           p: '#000000',
           h1: '#6a65d8',
           h2: '#1d2786',
+          table: '#afa7e3',
         },
         dark: {
           background: '#353941',
@@ -15,6 +16,7 @@ module.exports = {
           p: '#ffffff',
           h1: '#ffcdcd',
           h2: '#ffe6eb',
+          table: '#908285',
         },
     	},
     },

@@ -231,4 +231,14 @@ export let terms = [
     ],
     def: 'A fixed physical object or mark used as reference for a horizontal or vertical datum. A tidal bench mark is one near a tide station to which the tide staff and tidal datums are referred.',
   },
+  {
+    term: 'Tide Station',
+    letter: 'T',
+    links: [
+      {
+        term: 'Bench mark (BM)',
+      }
+    ],
+    def: 'The geographic location at which tidal observations are conducted. Also, the facilities used to make tidal observations. These may include a tide house, tide (water level) gauge, tide staff, and tidal bench marks.',
+  }
 ]
