@@ -211,6 +211,22 @@
           .x(function(d) { return xScale(d.date); })
           .y(function(d) { return yScale(d.v); });
 
+    // svg.append('g')
+    //   .call(d3.axisLeft(yScale).tickFormat(t => `${t}ft`))
+    //   .call(g => g.select('.domain')
+    //     .attr('stroke', legendColor(get(theme))))
+    //     //.remove())
+    //   .call(g => g.selectAll('.tick')
+    //     .selectAll('line')
+    //     .attr('stroke', legendColor(get(theme))))
+    //     //.remove())
+    //   .call(g => g.selectAll('.tick')
+    //     .selectAll('text')
+    //     .attr('fill', legendColor(get(theme)))
+    //     .style('font-size', '1.25em')
+    //     .style('text-anchor', 'right')
+    //     .style('font-family', 'monospace'));
+
     svg.append('rect')
       .attr('class', 'sea-level')
       .attr('x', xScale(0))

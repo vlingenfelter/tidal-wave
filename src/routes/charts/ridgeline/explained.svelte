@@ -67,7 +67,7 @@
     <Fig text={fig1.text} number={fig1.number}/>
     <div class={divStyles}>
       <p class={pStyles}>
-        NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from sea level), and Type to the type of tide (high or low). 
+        NOAA makes predictions for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from sea level), and Type to the type of tide (high or low). 
       </p>
 
       <h2 class={h2Styles}>Making the ridgeline chart</h2>
