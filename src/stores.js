@@ -59,3 +59,4 @@ export const today = readable(todayString);
 export const lastDay = readable(lastString);
 export const sevenDay = readable(sevenString);
 export const lunar = readable(lunarMonth);
+export const station = readable(9413616);

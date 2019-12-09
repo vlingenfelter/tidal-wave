@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { today, lastDay , theme} from '../stores';
+	import { today, lastDay , theme, station } from '../stores';
 	import { get } from 'svelte/store';
 	import LineChart from './LineChart.svelte';
   import Link from './Link.svelte';
@@ -15,7 +15,7 @@
   }
 
   onMount(() => {
-  	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
+  	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=${get(station)}&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
 
   	fetch(url)
   		.then(response => response.json())

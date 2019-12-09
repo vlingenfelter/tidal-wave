@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { today, lastDay, theme, lunar } from '../stores';
+	import { today, lastDay, theme, lunar, station } from '../stores';
 	import { get } from 'svelte/store';
 	import GlyphChart from './GlyphChart.svelte';
   import { nest } from 'd3-collection';
@@ -18,7 +18,7 @@
   }
 
   onMount(() => {
-  	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
+  	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=${get(station)}&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
 
   	fetch(url)
   		.then(response => response.json())

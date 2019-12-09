@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { today, lastDay, theme } from '../stores';
+	import { today, lastDay, theme, station } from '../stores';
 	import { get } from 'svelte/store';
 	import RadialChart from './RadialChart.svelte';
 
@@ -11,7 +11,7 @@
   let text = 'This is very similar to the Line Chart, but wrapped into a circle. This shows tidal high/low projections for Moss Landing for the next 30 days, where sea level (in feet) is represented by the radius and time is represented by the angle.'
 
   onMount(() => {
-  	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=9413616&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
+  	url = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${get(today)}&end_date=${get(lastDay)}&datum=MLLW&station=${get(station)}&time_zone=lst_ldt&units=english&interval=hilo&format=json`;
 
   	fetch(url)
   		.then(response => response.json())

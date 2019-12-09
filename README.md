@@ -18,6 +18,10 @@ cd __sapper__/export
 npx surge --domain https://tidal-wave.surge.sh
 ```
 
+## Changing the station
+
+By default, the station being used for all the chart is Moss Landing Ocean Pier station (ID: 9413616). To change this, and see a station of your choosing, navigate to `src/store.js` and change the station variable to the desired station ID. 
+
 ### Resources & Links
  - Color palette inspired by [this ColorHunt palette](https://colorhunt.co/palette/112238?ref=tab).
  - Data from the [National Oceanic and Atmospheric Association](https://noaa.gov).
