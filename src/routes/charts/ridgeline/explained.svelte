@@ -30,7 +30,7 @@
   }
 
   const layeredExplainedLink = {
-    href: '/charts/layered/explained',
+    href: '/charts/layered-line/explained',
     text: 'how the layered line chart was made'
   }
 
