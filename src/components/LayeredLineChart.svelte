@@ -126,7 +126,16 @@
 
     // svg.append('g')
     // 	.attr('transform', `translate(0,${height})`)
-    // 	.call(d3.axisBottom(xScale));
+    // 	.call(d3.axisBottom(xScale))
+    //   .call(g => g.selectAll('.tick')
+    //     .selectAll('line')
+    //     .attr('stroke', legendColor(get(theme))))
+    //   .call(g => g.select('.domain')
+    //     .attr('stroke', legendColor(get(theme))))
+    //   .selectAll('text') 
+    //     .attr('fill', legendColor(get(theme)))
+    //     .style('font-size', '1.25em')
+    //     .style('font-family', 'monospace');
 
     svg.append('rect')
       .attr('class', 'sea-level')
@@ -140,9 +149,11 @@
     svg.append('g')
     	.call(d3.axisLeft(yScale).tickFormat(t => `${t}ft`))
       .call(g => g.select('.domain')
+        // .attr('stroke', legendColor(get(theme))))
         .remove())
       .call(g => g.selectAll('.tick')
         .selectAll('line')
+        // .attr('stroke', legendColor(get(theme))))
         .remove())
       .call(g => g.selectAll('.tick')
         .selectAll('text')
@@ -159,7 +170,7 @@
       .style('text-anchor', 'middle')
       .style('font-family', 'monospace')
       .attr('fill', legendColor(get(theme)))
-      .text('Distance from sea level'); 
+      .text('Predicted water level'); 
 
     svg.append("clipPath")
       .attr('id', 'clip')

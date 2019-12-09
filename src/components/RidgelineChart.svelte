@@ -19,6 +19,9 @@
   let days = dataByDate.map(d => d.key);
   let n = days.length;
 
+  // let d0 = dataByDate.slice(0,n);
+  // console.log(d0);
+
   let hours = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
 
 	let el;
@@ -38,7 +41,7 @@
 	let tooltipY;
 	let text = '';
 
-	const margin = { top: 90, right: 20, bottom: 20, left: 20 };
+	const margin = { top: 90, right: 20, bottom: 20, left: 50 };
 
 	const lineStroke = (theme) => {
 		if (theme == 'light') {
@@ -47,6 +50,14 @@
 			return '#ffcdcd';
 		}
 	}
+
+  const legendColor = (theme) => {
+    if (theme == 'light') {
+      return '#000';
+    } else {
+      return '#fff';
+    }
+  }
 
   const maxWidth = () => {
     if (w > 1000) {
@@ -103,7 +114,16 @@
 
     // svg.append('g')
     //   .attr('transform', `translate(0, ${height})`)
-    //   .call(d3.axisBottom(xScale));
+    //   .call(d3.axisBottom(xScale))
+    //   .call(g => g.selectAll('.tick')
+    //     .selectAll('line')
+    //     .attr('stroke', legendColor(get(theme))))
+    //   .call(g => g.select('.domain')
+    //     .attr('stroke', legendColor(get(theme))))
+    //   .selectAll('text') 
+    //     .attr('fill', legendColor(get(theme)))
+    //     .style('font-size', '1.25em')
+    //     .style('font-family', 'monospace');
 
     // svg.selectAll('.hour')
     //   .data(hours)
@@ -129,6 +149,21 @@
         .attr("stroke", lineStroke(get(theme)))
         .attr("stroke-width", 2)
         .attr("d", line);
+
+     // svg.selectAll('.y-label')
+     //  .data(d0)
+     //  .enter()
+     //  .append("text")
+     //    .attr("transform", function(d){return("translate(0," + (yName(d.key)-80) +")" )})
+     //    .attr('class', d => `line date-${d.key}`)
+     //    .datum(d => d.values)
+     //    .attr("fill", legendColor(get(theme)))
+     //    .attr('y', d => yScale(d[0].v))
+     //    .attr('x', 0 - margin.left)
+     //    .style('text-anchor', 'left')
+     //    .style('font-family', 'monospace')
+     //    .text(d => formatter(d[0].date));
+
 
     svg.selectAll('.invisible')
       .data(dataByDate)

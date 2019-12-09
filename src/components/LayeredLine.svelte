@@ -3,7 +3,6 @@
 	import { today, lastDay , theme} from '../stores';
 	import { get } from 'svelte/store';
 	import LayeredLineChart from './LayeredLineChart.svelte';
-  import Fig from './Fig.svelte';
 
 	let url = '';
   let data = [];
@@ -42,7 +41,6 @@
 
 {#if loaded}
 	<LayeredLineChart data={data} />
-  <Fig {text} />
 {:else}
 	<h2 class={pStyles}>Loading...</h2>
 {/if}
