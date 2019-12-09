@@ -58,6 +58,7 @@
   let yName;
 	let line;
 	let svg;
+  let lunarData;
 
 	let margin = { top: 30, right: 30, bottom: 40, left: 30 };
 
@@ -152,12 +153,17 @@
     width = maxWidth() - margin.left - margin.right;
     height = maxHeight() - margin.top - margin.bottom;
 
+    lunarData = get(lunar);
+
     if (maxWidth() < 450) {
       margin = { top: 30, right: 5, bottom: 40, left: 50 };
       n = parseInt(days.length/2);
       days = days.slice(0, n);
       dataByDate = dataByDate.filter(d => days.indexOf(d.key) >= 0);
       data = data.filter(d => days.indexOf(d.date) >= 0);
+
+      lunarData = lunarData.slice(0,n);
+      ranges = ranges.slice(0,n);
     }
 
     if (w > 1200) {
@@ -218,7 +224,7 @@
         .attr('d', line);
 
     svg.selectAll('.label')
-      .data(get(lunar))
+      .data(lunarData)
       .enter()
       .append('g')
         .attr('class', 'label')
@@ -231,7 +237,7 @@
         .text(d => formatter(d.date)); 
 
     let moons = svg.selectAll('.moon')
-      .data(get(lunar))
+      .data(lunarData)
       .enter()
       .append('g')
         .attr('class', 'moon')
