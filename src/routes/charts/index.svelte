@@ -65,7 +65,8 @@
 </script>
 
 <svelte:head>
-	<title>Tidal Charts | Tidal Waves</title>
+	<title>Charts | Tidal Waves</title>
+	<meta name='description' content='A list data visualizations that show NOAA tide high/low predicitons.'>
 </svelte:head>
 
 <div class='flex justify-center'>

@@ -35,6 +35,7 @@
 
 <svelte:head>
   <title>Glossary | Tidal Wave</title>
+  <meta name='description' content="Glossary of terms related to tides and tidal currents for Tidal Wave, a visual exploration of NOAA's high/low tidal projections.">
 </svelte:head>
 
 <div class='flex justify-center'>

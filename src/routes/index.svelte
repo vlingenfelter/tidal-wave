@@ -52,6 +52,7 @@
 
 <svelte:head>
 	<title>Tidal Wave</title>
+  <meta name='description' content="Tidal wave is a visual exploration of NOAA's high/low tidal projections. By focusing on more artistic interpretations of the marigram, we can begin to see some of the daily and monthly patterns that exist in the tides. This project was inspired by Adrien Segal's Tidal Datum.">
 </svelte:head>
 
 <div class='flex justify-center'>
