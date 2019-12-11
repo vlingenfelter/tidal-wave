@@ -56,6 +56,7 @@
 
 <svelte:head>
 	<title>Vertical Lunar, Explained | Tidal Waves</title>
+	<meta name='description' content='The step by step process of creating the vertical lunar chart, a chart depicting tidal high/low predictions and lunar phase.'>
 </svelte:head>
 
 <div class='flex justify-center'>

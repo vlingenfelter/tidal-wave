@@ -66,7 +66,7 @@
 
 <svelte:head>
 	<title>Charts | Tidal Waves</title>
-	<meta name='description' content='A list data visualizations that show NOAA tide high/low predicitons.'>
+	<meta name='description' content='Six distinct data visualizations that show NOAA tide high/low predicitons, all based on more artistic forms of the marigram.'>
 </svelte:head>
 
 <div class='flex justify-center'>

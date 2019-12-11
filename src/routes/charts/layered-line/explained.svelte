@@ -51,6 +51,7 @@
 
 <svelte:head>
 	<title>Layered Line, Explained | Tidal Waves</title>
+  <meta name='description' content="Explanation of the layered line chart, a chart depicting tidal high/low predictions, and a part of tidal wave, a visual exploration of NOAA's high/low tidal projections">
 </svelte:head>
 
 <div class='flex justify-center'>

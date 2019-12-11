@@ -16,6 +16,7 @@
 
 <svelte:head>
 	<title>Radial | Tidal Waves</title>
+	<meta name='description' content="The radial chart is a chart depicting tidal high/low predictions, and a part of tidal wave, a visual exploration of NOAA's high/low tidal projections">
 </svelte:head>
 
 <h1 class={h1Styles}>The Radial Line Chart</h1>

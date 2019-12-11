@@ -59,6 +59,7 @@
 
 <svelte:head>
 	<title>Vertical, Explained | Tidal Waves</title>
+		<meta name='description' content="An explanation of the vertical lunar chart, a chart depicting tidal high/low predictions, and a part of tidal wave, a visual exploration of NOAA's high/low tidal projections">
 </svelte:head>
 
 <div class='flex justify-center'>

@@ -16,6 +16,7 @@
 
 <svelte:head>
 	<title>Vertical Lunar | Tidal Waves</title>
+	<meta name='description' content="The vertical lunar chart is a chart depicting tidal high/low predictions and lunar phase, and a part of tidal wave, a visual exploration of NOAA's high/low tidal projections">
 </svelte:head>
 
 <h1 class={h1Styles}>Vertical Lunar Chart</h1>

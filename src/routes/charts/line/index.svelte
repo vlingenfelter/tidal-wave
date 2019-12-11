@@ -16,6 +16,7 @@
 
 <svelte:head>
 	<title>Line | Tidal Waves</title>
+	<meta name='description' content="The line chart is a chart depicting tidal high/low predictions, and a part of tidal wave, a visual exploration of NOAA's high/low tidal projections">
 </svelte:head>
 
 <h1 class={h1Styles}>The Line Chart</h1>
