@@ -44,6 +44,11 @@
     text: 'next chart in the series'
   }
 
+  const busJoy = {
+    href: 'https://violetlingenfelter.com/projects/bus-joy/about/',
+    text: 'Bus Joy'
+  }
+
   const fig1 = {
     text: 'A table showing data from November 8, 2019 and November 9, 2019 showing tidal high/low projections for Moss Landing, Ocean Pier station.',
     number: 1,
@@ -61,24 +66,28 @@
       <h1 class={h1Styles}>Ridgeline Chart, Explained</h1>
     </div>
     <div class={divStyles}>
-      <p class={pStyles}>As a reminder, here's what the data looks like when it comes from NOAA's <Link props={noaaLink} />.
+      <p class={pStyles}>
+        The ridgeline chart is beautiful in its simplicity - it reminds one of the movement of a body of water. Ridgeline charts are a favorite and are often called 'Joy Division' plots due to the album artwork on Joy Division's Unknown Pleasures. To see another ridgeline of mine, check out <Link props={busJoy} />. 
+      </p>
+
+      <h2 class={h2Styles}>About the data</h2>
+
+      <p class={pStyles}>
+        NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from <GlossaryLink term={'bench mark (BM)'} text={'bench mark'}/>), and Type to the type of tide (high or low). This data comes from NOAA's <Link props={noaaLink} />.
       </p>
     </div>
     <DataTable />
     <Fig text={fig1.text} number={fig1.number}/>
     <div class={divStyles}>
-      <p class={pStyles}>
-        NOAA makes predictions for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from sea level), and Type to the type of tide (high or low). 
-      </p>
 
       <h2 class={h2Styles}>Making the ridgeline chart</h2>
 
       <p class={pStyles}>
-        One way to visualize this data is with a <Link props={layeredLink} />. It might be helpful to look at <Link props={layeredExplainedLink} /> before reading this section. 
+        Another way to visualize this data is with a <Link props={layeredLink} />. This chart was directly inspired by the layered line chart, so it might be helpful to look at <Link props={layeredExplainedLink} /> before reading this section. 
       </p>
 
       <p class={pStyles}>
-        The ridgeline chart is a variation of the layered line chart. The layered line chart shows the predicitons for each day layered on each other. The ridgeline chart shows the predictions for each day stacked, with the prediction closest to now at the top of the chart. So first we have to make an x axis that is 24 hours long:
+        The ridgeline chart shows the predictions for each day stacked, with the prediction closest to now at the top of the chart. So first we have to make an x axis that is 24 hours long:
       </p>
 
       <img class={imgStyles} alt='The x axis of the layerd line chart' src={img1}>

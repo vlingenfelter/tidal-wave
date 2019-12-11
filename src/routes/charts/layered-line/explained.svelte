@@ -43,6 +43,11 @@
     text: 'next chart in the series'
   }
 
+  const adrienLink = {
+    href: 'https://www.adriensegal.com/tidal-datum',
+    text: "Adrien Segal's Tidal Datum"
+  }
+
   const fig1 = {
     text: 'A table showing data from November 8, 2019 and November 9, 2019 showing tidal high/low projections for Moss Landing, Ocean Pier station.',
     number: 1,
@@ -60,15 +65,17 @@
       <h1 class={h1Styles}>Layered Line Chart, Explained</h1>
     </div>
     <div class={divStyles}>
-      <p class={pStyles}>As a reminder, here's what the data looks like when it comes from NOAA's <Link props={noaaLink} />.
+      <p class={pStyles}>Layering tidal predictions for each day makes it possible to see hourly trends in the tide across the month. This chart was directly inspired by <Link props={adrienLink} />.</p>
+
+      <h2 class={h2Styles}>About the data</h2>
+
+      <p class={pStyles}>
+        NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from <GlossaryLink term={'bench mark (BM)'} text={'bench mark'}/>), and Type to the type of tide (high or low). This data comes from NOAA's <Link props={noaaLink} />.
       </p>
     </div>
     <DataTable />
     <Fig text={fig1.text} number={fig1.number}/>
     <div class={divStyles}>
-      <p class={pStyles}>
-        NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from sea level), and Type to the type of tide (high or low). 
-      </p>
 
       <h2 class={h2Styles}>Making the layered line chart</h2>
 

@@ -51,16 +51,23 @@
     <div class={divStyles}>
 			<h1 class={h1Styles}>Line Chart, Explained</h1>
 		</div>
-		<div class={divStyles}>
-			<p class={pStyles}>First, let's take a look at how the data comes from NOAA's <Link props={noaaLink} />.
-			</p>
-		</div>
-		<DataTable />
-		<Fig text={fig1.text} number={fig1.number}/>
+
 		<div class={divStyles}>
 			<p class={pStyles}>
-				NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from sea level), and Type to the type of tide (high or low). 
+				The line chart is inspired by the <GlossaryLink term={'marigram'} />. The main difference between the line chart you see here and a marigram is the data: a marigram shows recorded historic data whereas the line chart here shows tidal projections. Marigrams are records of sea level, and so they are much less smooth than the chart you see here.
 			</p>
+
+			<h2 class={h2Styles}>About the data</h2>
+
+			<p class={pStyles}>
+				NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from <GlossaryLink term={'bench mark (BM)'} text={'bench mark'}/>), and Type to the type of tide (high or low). This data comes from NOAA's <Link props={noaaLink} />.
+			</p>
+		</div>
+
+		<DataTable />
+		<Fig text={fig1.text} number={fig1.number}/>
+
+		<div class={divStyles}>
 
 			<h2 class={h2Styles}>Making the line chart</h2>
 

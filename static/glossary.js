@@ -3,7 +3,7 @@ export let terms = [
     term: 'Marigram',
     letter: 'M',
     links: [],
-    def: 'A graphic record of the rise and fall of water level. The record is in the form of a curve in which time is generally represented on the abscissa and the height of the water level on the ordinate.',
+    def: 'A graphic record of the rise and fall of water level. The record is in the form of a curve in which time is generally represented on the x-coordinate and the height of the water level on the y-coordinate.',
   },
   {
     term: 'Tide',
@@ -40,7 +40,7 @@ export let terms = [
     term: 'Age of Moon',
     letter: 'A',
     links: [],
-    def: 'The time elapsed since the preceding New Moon',
+    def: 'The time elapsed since the preceding New Moon.',
   },
   {
     term: 'Type of Tide',
@@ -136,7 +136,7 @@ export let terms = [
     def: 'The difference in height between consecutive high and low waters. The mean range is the difference in height between mean high water and mean low water.',
   },
   {
-    term: 'Neap Tide',
+    term: 'Neap Tides',
     letter: 'N',
     links: [
       {
@@ -165,7 +165,7 @@ export let terms = [
     term: 'Low Tide',
     letter: 'L',
     links: [],
-    def: 'The minimum height reached by a falling tide',
+    def: 'The minimum height reached by a falling tide.',
   },
   {
     term: 'Intertidal Zone',
@@ -178,7 +178,7 @@ export let terms = [
         term: 'Low tide',
       }
     ],
-    def: 'The zone between the mean higher high water and mean lower low water lines',
+    def: 'The zone between the mean higher high water and mean lower low water lines.',
   },
   {
     term: 'High Tide',

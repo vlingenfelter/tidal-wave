@@ -68,20 +68,24 @@
 			<h1 class={h1Styles}>Vertical Chart, Explained</h1>
 		</div>
 		<div class={divStyles}>
-			<p class={pStyles}>As a reminder, here's what the data looks like when it comes from NOAA's <Link props={noaaLink} />.
-			</p>
+			<p class={pStyles}>
+        This is the most visually complex chart in the series. It is meant to show how the tides correspond to the lunar dar, which is slightly longer than the solar day, by showing how the time of the predicted high and low tides shift as the Moon ages. 
+      </p>
+
+      <h2 class={h2Styles}>About the data</h2>
+
+      <p class={pStyles}>
+        NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from <GlossaryLink term={'bench mark (BM)'} text={'bench mark'}/>), and Type to the type of tide (high or low). This data comes from NOAA's <Link props={noaaLink} />.
+      </p>
 		</div>
 		<DataTable />
 		<Fig text={fig1.text} number={fig1.number}/>
 		<div class={divStyles}>
-			<p class={pStyles}>
-				NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from sea level), and Type to the type of tide (high or low). 
-			</p>
 
-			<h2 class={h2Styles}>Making the vertical lunar chart</h2>
+			<h2 class={h2Styles}>Making the vertical chart</h2>
 
 			<p class={pStyles}>
-				The vertical lunar chart visualizes the <GlossaryLink term='range of tide' /> for each day, as well as the time of day for each <GlossaryLink term='high tide' /> and <GlossaryLink term='low tide' />. We can start by putting a horizontal line to show the water level <GlossaryLink term='Bench Mark (BM)' text='bench mark' /> for the Moss Landing station:
+				The vertical chart visualizes the <GlossaryLink term='range of tide' /> for each day, as well as the time of day for each <GlossaryLink term='high tide' /> and <GlossaryLink term='low tide' />. We can start by putting a horizontal line to show the water level <GlossaryLink term='Bench Mark (BM)' text='bench mark' /> for the Moss Landing station:
 			</p>
 
 			<img class={imgStyles} alt='The y axis and sea level' src={img1}>

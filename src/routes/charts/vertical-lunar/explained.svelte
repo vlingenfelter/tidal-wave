@@ -65,15 +65,19 @@
 			<h1 class={h1Styles}>Vertical Lunar Chart, Explained</h1>
 		</div>
 		<div class={divStyles}>
-			<p class={pStyles}>As a reminder, here's what the data looks like when it comes from NOAA's <Link props={noaaLink} />.
-			</p>
+			<p class={pStyles}>
+        This chart was designed to highlight the relationship between the Moon and the tide. Specifically, this visualization is meant to highlight the <GlossaryLink term={'spring tides'}/> and the <GlossaryLink term={'neap tides'}/>. 
+      </p>
+
+      <h2 class={h2Styles}>About the data</h2>
+
+      <p class={pStyles}>
+        NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from <GlossaryLink term={'bench mark (BM)'} text={'bench mark'}/>), and Type to the type of tide (high or low). This data comes from NOAA's <Link props={noaaLink} />.
+      </p>
 		</div>
 		<DataTable />
 		<Fig text={fig1.text} number={fig1.number}/>
 		<div class={divStyles}>
-			<p class={pStyles}>
-				NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from sea level), and Type to the type of tide (high or low). 
-			</p>
 
 			<p class={pStyles}>
 				For this chart we also have <GlossaryLink term='age of moon' /> data. That comes from the simple version of <Link props={moonLink} />. I use the 'simple' method of moon phase calculation for this visualization.  

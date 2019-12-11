@@ -57,30 +57,30 @@
 			<h1 class={h1Styles}>Radial Chart, Explained</h1>
 		</div>
 		<div class={divStyles}>
-			<p class={pStyles}>As a reminder, here's what the data looks like when it comes from NOAA's <Link props={noaaLink} />.
+			
+			<h2 class={h2Styles}>About the data</h2>
+
+			<p class={pStyles}>
+				NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from <GlossaryLink term={'bench mark (BM)'} text={'bench mark'}/>), and Type to the type of tide (high or low). This data comes from NOAA's <Link props={noaaLink} />.
 			</p>
 		</div>
 		<DataTable />
 		<Fig text={fig1.text} number={fig1.number}/>
 		<div class={divStyles}>
-			<p class={pStyles}>
-				NOAA makes predicitons for every high tide and low tide for each <GlossaryLink term={'tide station'} />. The data table has three columns: T, V, and Type. T refers to the predicted time, V to the predicted water level (in feet from sea level), and Type to the type of tide (high or low). 
-			</p>
-
 			<h2 class={h2Styles}>Making the radial chart</h2>
 
 			<p class={pStyles}>
-				One way to visualize this data is with a <Link props={lineLink} />. It might be helpful to look at <Link props={lineExplainedLink} /> before reading this section. 
+				One way to visualize this data is with a <Link props={lineLink} />. Because this chart was directly inspired by the line chart, it might be helpful to look at <Link props={lineExplainedLink} /> before reading this section. 
 			</p>
 
 			<p class={pStyles}>
-				The radial chart is very similar to the line chart, but instead of moving from left to right represent date and time (T from the table), we move in a circle. That means the predicted water level (V from the table) will be represented as the distance from the center of the circle. We can add markers to make this more apparent:
+				The radial chart is very similar to a line chart, but instead of moving from left to right represent date and time (T from the table), we move in a circle. That means the predicted water level (V from the table) will be represented as the distance from the center of the circle. We can add markers to make this more apparent:
 			</p>
 
 			<img class={imgStyles} alt='The y axis of the radial chart' src={img1}>
 
 			<p class={pStyles}>
-				The smallest circle is a foot below sea level. The largest circle is six feet above sea level. Now we can add our data, starting from the top of the circle and moving clockwise. 
+				The smallest circle is a foot below sea level. The largest circle is six feet above sea level. Now we can add our data, starting from the top of the circle with the data closest to now, and moving clockwise as the predictions get further into the future.
 			</p>
 
 			<img class={imgStyles} alt='The finished radial chart.' src={img2}>
