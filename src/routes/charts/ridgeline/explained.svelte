@@ -84,7 +84,7 @@
       <img class={imgStyles} alt='The x axis of the layerd line chart' src={img1}>
 
       <p class={pStyles}>
-        To make things a little easier to follow, we can add a vertical line at each hour. This will make it easier to comare the ridgelines later on. 
+        To make things a little easier to follow, we can add a vertical line at each hour. This will make it easier to compare the ridgelines later on. 
       </p>
 
       <img class={imgStyles} alt='A vertical line to show each hour has been added' src={img2}>

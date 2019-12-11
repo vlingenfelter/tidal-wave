@@ -40,7 +40,7 @@ export let terms = [
     term: 'Age of Moon',
     letter: 'A',
     links: [],
-    def: 'The time elapsed since the preceding new Moon',
+    def: 'The time elapsed since the preceding New Moon',
   },
   {
     term: 'Type of Tide',
@@ -69,7 +69,7 @@ export let terms = [
         term: 'Semidiurnal',
       },
     ],
-    def: 'A graphic representation of the rise and fall of the tide in which time is usually represented by the abscissa and height by the ordinate. For a semidiurnal tide with little diurnal inequality, the graphic representation approximates a cosine curve.',
+    def: 'A graphic representation of the rise and fall of the tide in which time is usually represented by the x-coordinate and height by the y-coordinate. For a semidiurnal tide with little diurnal inequality, the graphic representation approximates a cosine curve.',
   },
   {
     term: 'Sequence of Tide',
@@ -101,7 +101,7 @@ export let terms = [
     term: 'Trough',
     letter: 'T',
     links: [],
-    def: 'The lowest point in a propagating wave',
+    def: 'The lowest point in a propagating wave.',
   },
   {
     term: 'Spring Tides',

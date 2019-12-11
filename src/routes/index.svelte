@@ -61,7 +61,7 @@
 			<h1 class={h1Styles}>Welcome to Tidal Wave</h1>
 		</div>
 		<div class={divStyles}>
-			<p class={pStyles}>Tidal wave is a visual exploration of NOAA's high/low tidal projections. By focusing on more artistic interpretations of the <GlossaryLink term={'marigram'} />, we can begin to see some of the daily and monthly patterns that exist in the tides. This project was inspired by <Link props={adrienLink}/>.</p>
+			<p class={pStyles}>Tidal Wave is a visual exploration of NOAA's high/low tidal projections. By focusing on more artistic interpretations of the <GlossaryLink term={'marigram'} />, we can begin to see some of the daily and monthly patterns that exist in the tides. This project was inspired by <Link props={adrienLink}/>.</p>
 		</div>
 
 		<img alt='Line' src={img1}>
@@ -72,7 +72,7 @@
     <div class={divStyles}>
     	<h2 class={h2Styles}>Data Source</h2>
 	    <p class={pStyles}>
-	    	All the tidal projections being used in these visualizations are from the National Oceanic and Atmospheric Administration's (NOAA) <Link props={noaaLink} />. All charts are showing the next 30 days of projections from Moss Landing, Ocean Pier station (shown on map below).
+	    	All the tidal projections being used in these visualizations are from the National Oceanic and Atmospheric Administration's (NOAA) <Link props={noaaLink} />. All charts are showing the next 30 days of projections from the Moss Landing, Ocean Pier station (shown on map below).
 	    </p>
 
 	    <div class='flex justify-center'>

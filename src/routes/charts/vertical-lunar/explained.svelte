@@ -100,7 +100,7 @@
 			<img class={imgStyles} alt='Each day has a vertical line corresponding to the tidal range.' src={img3}>
 
 			<p class={pStyles}>
-				Because <GlossaryLink term={'Tide'} text={'tide'}/> tide corresponds to the age of the moon, it might be intersting to add the phase of the moon on top of the vertical line for each day's range:
+				Because <GlossaryLink term={'Tide'} text={'tide'}/> corresponds to the age of the moon, it might be interesting to add the phase of the moon on top of the vertical line for each day's range:
 			</p>
 
 			<img class={imgStyles} alt='A moon graphic is now added to each line' src={img4}>
