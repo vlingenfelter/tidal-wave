@@ -4,5 +4,10 @@
 	"name": "Tidal Wave -- A Data Art project",
 	"short_name": "Tidal Wave",
 	"display": "minimal-ui",
-	"start_url": "/"
+	"start_url": "/",
+	"icons": [{
+    "src": "manifest192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }],
 }
