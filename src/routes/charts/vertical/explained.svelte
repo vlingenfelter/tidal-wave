@@ -91,7 +91,7 @@
 			<img class={imgStyles} alt='The y axis and sea level' src={img1}>
 
 			<p class={pStyles}>
-				Now we can add a line for every day, where the line starts at the highest high tide and ends at the lowest low tide. The range closest to now is on the left, and as they move to the left, they get further into the future:
+				Now we can add a line for every day, where the line starts at the highest high tide and ends at the lowest low tide. The range closest to now is on the left, and as they move to the right, they get further into the future:
 			</p>
 
 			<img class={imgStyles} alt='There is now a line for each day showing the range of tide.' src={img2}>
